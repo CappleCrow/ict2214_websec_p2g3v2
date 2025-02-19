@@ -8,7 +8,7 @@ from sklearn.metrics import classification_report, accuracy_score
 import joblib
 
 # Load the updated dataset
-file_path = "Final_Updated_Dataset.csv"
+file_path = "Updated_Dataset.csv"
 df = pd.read_csv(file_path)
 
 # Drop unnecessary columns (like index if present)
