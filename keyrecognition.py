@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
 
 # Load the dataset
-data = pd.read_csv('ict2214_websec_p2g3/api_keys_dataset.csv')
+data = pd.read_csv('api_keys_dataset.csv')
 
 # Feature Extraction
 def extract_features(df):
@@ -102,9 +102,9 @@ def test_api_key(key, model):
 
 # Example of testing individual keys
 example_keys = [
-    "-pj-m3GIyXFGthlvQPNP-bHjeb-JoZrkgN28RCjtauKxCw-bJw5yz8mzaEtfKZOqhj71R8PCQovBOtT3BlbkFJ-K9wdZb6lDzCpHpmEFY8NLqE58vEzQPFajnAtlOhZGtx5lm7sXJs8-wjnVAaZxz2H6eiqu0hM3",  # Valid OpenAI
+    "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",  # Valid OpenAI
     "sk-proj-m3GIyXF@thlvQPNP-bHjeb-JoZrkgN28RCjtauKxCw-bJw5yz8mzaEtfKZOqhj71R8PCQovBOtT3BlbkFJ-K9wdZb6lDzCpHpmEFY8NLqE58vEzQPFajnAtlOhZGtx5lm7sXJs8-wjnVAaZxz2H6eiqu0hM3",  # Invalid OpenAI
-    "AIzaS&1234567890-abcdefGHIJKLmnopQRSTU",  # Valid Google
+    "AIzaS&1234567890-abcdefGHIJKLmnopQRSTU",  # Invalid Google
     "AIzaSy1234567890-abcdefGHIJKLmnopQRSTU",  # Invalid Google
     "s-ant-api03-wcw7Evb_bgje4hjQebOZYAd6sLVMUuiTPpLEzA8s_bN3kW0k",  # Valid Anthropic
     "sk-ant-api03-wcw7E1b_bgje4hjQebOZYAd6sLVMU1&TPpLEzA8s1bN3kW0k"   # Invalid Anthropic
