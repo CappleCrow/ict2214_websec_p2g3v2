@@ -7,6 +7,7 @@ import xgboost as xgb
 from flask import Flask, request, jsonify
 from keyrecognition import test_api_key  # Import updated function
 from pathlib import Path
+import tiktoken
 
 MODEL_DIR = Path(__file__).parent
 
@@ -51,6 +52,26 @@ def preprocess_input(data):
     df_scaled = scaler.transform(df[feature_columns])
     return df_scaled
 
+def calculate_tokens(messages):
+    """ Calculate total tokens per message """
+    try:
+        encoding = tiktoken.encoding_for_model("gpt-4o-mini")
+        num_tokens = 0
+
+        for message in messages:
+            num_tokens += 4 
+
+            for key, value in message.items():
+                num_tokens += len(encoding.encode(str(value)))
+                if key == "name": # if there is name role is omitted
+                    num_tokens -= 1
+        
+        num_tokens += 2
+        return num_tokens
+    except Exception as e:
+        print(f"Cannot calculate tokens: {str(e)}")
+        return 0
+    
 @app.route('/validate_openai_request', methods=['POST'])
 def validate_openai_request():
     """ API Gateway Endpoint to analyze OpenAI requests """
@@ -64,6 +85,9 @@ def validate_openai_request():
         if key_validity != "Valid OpenAI":
             return jsonify({"status": "blocked", "reason": "Invalid API Key"}), 403
         
+        messages = data.get("messages", [])
+        total_tokens = calculate_tokens(messages)
+
         # Extract request metadata for classification
         request_metadata = {
             "Rate Limiting": int(request.headers.get("x-ratelimit-remaining-requests", 100)),
@@ -78,8 +102,11 @@ def validate_openai_request():
             "Time of Day": "Afternoon"
         }
 
+        if total_tokens > 1:
+            return jsonify({"status": "blocked", "reason": f"Excessive Token Usage, Request Used {total_tokens} tokens"}), 403
+
         # Apply updated rules
-        night_times = ['Night', 'Midnight', 'Late Night']
+        night_times = ['Night']
         if request_metadata["Time of Day"] in night_times:
             return jsonify({"status": "blocked", "reason": "Request made at Night time"}), 403
         
