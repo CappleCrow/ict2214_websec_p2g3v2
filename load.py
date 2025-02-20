@@ -28,7 +28,7 @@ rf_model = joblib.load(model_paths['rf_model'])
 app = Flask(__name__)
 
 # Define categorical columns
-categorical_cols = ["HTTP Method", "API Endpoint", "User-Agent", "Generalized API Endpoint", "Time of Day"]
+categorical_cols = ["HTTP Method", "API Endpoint", "User-Agent", "Time of Day"]
 
 # OpenAI API URL
 OPENAI_API_URL = "https://api.openai.com/v1/chat/completions"
@@ -45,7 +45,7 @@ def preprocess_input(data):
     # Select the correct feature columns
     feature_columns = [
         "Rate Limiting", "Endpoint Entropy", "HTTP Method", "API Endpoint",
-        "HTTP Status", "User-Agent", "Token Used", "Generalized API Endpoint", "Method_POST", "Time of Day"
+        "HTTP Status", "User-Agent", "Token Used", "Method_POST", "Time of Day"
     ]
     
     # Normalize numeric values
@@ -93,16 +93,15 @@ def validate_openai_request():
             "Rate Limiting": int(request.headers.get("x-ratelimit-remaining-requests", 100)),
             "Endpoint Entropy": np.random.uniform(0.1, 1.0),
             "HTTP Method": request.method,
-            "API Endpoint": "/v1/chat/completions",
+            "API Endpoint": "/data",
             "HTTP Status": 200,
             "User-Agent": request.headers.get("User-Agent", "Unknown"),
             "Token Used": data.get("max_tokens", 0),
-            "Generalized API Endpoint": "/v1/chat",
             "Method_POST": 1 if request.method == "POST" else 0,
             "Time of Day": "Afternoon"
         }
 
-        if total_tokens > 1:
+        if total_tokens > 30:
             return jsonify({"status": "blocked", "reason": f"Excessive Token Usage, Request Used {total_tokens} tokens"}), 403
 
         # Apply updated rules
