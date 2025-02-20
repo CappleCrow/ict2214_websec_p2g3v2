@@ -6,12 +6,22 @@ import joblib
 import xgboost as xgb
 from flask import Flask, request, jsonify
 from keyrecognition import test_api_key  # Import updated function
+from pathlib import Path
+
+MODEL_DIR = Path(__file__).parent
+
+model_paths = {
+    'xgboost': str(MODEL_DIR / 'XGBoost_Anomaly_Model.pkl'),
+    'scaler': MODEL_DIR / 'scaler.pkl',
+    'label_encoder': MODEL_DIR / 'label_encoder.pkl',
+    'rf_model': MODEL_DIR / 'random_forest_api_key_model.pkl'
+}
 
 # Load the trained models and preprocessing tools
-xgb_model = pickle.load(open("XGBoost_Anomaly_Model.pkl", "rb"))
-scaler = joblib.load("scaler.pkl")
-label_encoders = joblib.load("label_encoder.pkl")
-rf_model = joblib.load("random_forest_api_key_model.pkl")
+xgb_model = pickle.load(open(model_paths['xgboost'], 'rb'))
+scaler = joblib.load(model_paths['scaler'])
+label_encoders = joblib.load(model_paths['label_encoder'])
+rf_model = joblib.load(model_paths['rf_model'])
 
 # Flask API Gateway
 app = Flask(__name__)

@@ -3,9 +3,15 @@ import re
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
+from pathlib import Path
 
+MODEL_DIR = Path(__file__).parent
+
+csv_path = {
+    'api_keys': str(MODEL_DIR / 'api_keys_dataset.csv')
+}
 # Load the dataset
-data = pd.read_csv('api_keys_dataset.csv')
+data = pd.read_csv(csv_path['api_keys'])
 
 # Feature Extraction
 def extract_features(df):
