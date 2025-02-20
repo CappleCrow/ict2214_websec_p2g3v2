@@ -93,7 +93,8 @@ def validate_openai_request():
             "Rate Limiting": int(request.headers.get("x-ratelimit-remaining-requests", 100)),
             "Endpoint Entropy": np.random.uniform(0.1, 1.0),
             "HTTP Method": request.method,
-            "API Endpoint": "/data",
+            "API Endpoint": "/data", #not legit
+            # "API Endpoint": "/v1/chat/completions", #legit
             "HTTP Status": 200,
             "User-Agent": request.headers.get("User-Agent", "Unknown"),
             "Token Used": data.get("max_tokens", 0),
