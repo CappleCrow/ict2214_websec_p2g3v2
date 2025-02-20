@@ -5,18 +5,13 @@ import pickle
 import joblib
 import xgboost as xgb
 from flask import Flask, request, jsonify
-from sklearn.ensemble import RandomForestClassifier
+from keyrecognition import test_api_key  # Import updated function
 
 # Load the trained models and preprocessing tools
-xgb_model_path = "XGBoost_Anomaly_Model.pkl"
-rf_model_path = "random_forest_api_key_model.pkl"
-scaler_file_path = "scaler.pkl"
-label_encoder_file_path = "label_encoder.pkl"
-
-xgb_model = pickle.load(open(xgb_model_path, "rb"))
-scaler = joblib.load(scaler_file_path)
-label_encoders = joblib.load(label_encoder_file_path)
-rf_model = joblib.load(rf_model_path)
+xgb_model = pickle.load(open("XGBoost_Anomaly_Model.pkl", "rb"))
+scaler = joblib.load("scaler.pkl")
+label_encoders = joblib.load("label_encoder.pkl")
+rf_model = joblib.load("random_forest_api_key_model.pkl")
 
 # Flask API Gateway
 app = Flask(__name__)
@@ -46,19 +41,15 @@ def preprocess_input(data):
     df_scaled = scaler.transform(df[feature_columns])
     return df_scaled
 
-def check_api_key(api_key):
-    """ Check if the provided API key is valid using the Random Forest model """
-    from keyrecognition import test_api_key  # Import function from keyrecognition.py
-    return test_api_key(api_key, rf_model)
-
 @app.route('/validate_openai_request', methods=['POST'])
 def validate_openai_request():
     """ API Gateway Endpoint to analyze OpenAI requests """
-    data = request.json  # Incoming OpenAI API request payload
+    data = request.json
     
     try:
+        # Check API Key Validity
         api_key = request.headers.get("Authorization", "").replace("Bearer ", "")
-        key_validity = check_api_key(api_key)
+        key_validity = test_api_key(api_key, rf_model)
         
         if key_validity != "Valid OpenAI":
             return jsonify({"status": "blocked", "reason": "Invalid API Key"}), 403
@@ -71,12 +62,24 @@ def validate_openai_request():
             "API Endpoint": "/v1/chat/completions",
             "HTTP Status": 200,
             "User-Agent": request.headers.get("User-Agent", "Unknown"),
-            "Token Used": np.random.randint(1, 1000),
+            "Token Used": data.get("max_tokens", 0),
             "Generalized API Endpoint": "/v1/chat",
             "Method_POST": 1 if request.method == "POST" else 0,
             "Time of Day": "Afternoon"
         }
+
+        # Apply updated rules
+        night_times = ['Night', 'Midnight', 'Late Night']
+        if request_metadata["Time of Day"] in night_times:
+            return jsonify({"status": "blocked", "reason": "Request made at Night time"}), 403
         
+        if request_metadata["Token Used"] > 10000:
+            return jsonify({"status": "blocked", "reason": "Excessive Token Usage"}), 403
+        
+        unconventional_agents = ['Python-requests', 'curl', 'PostmanRuntime', 'Scrapy', 'Java']
+        if any(ua in request_metadata["User-Agent"] for ua in unconventional_agents):
+            return jsonify({"status": "blocked", "reason": "Unconventional User-Agent"}), 403
+
         # Preprocess input for the AI model
         processed_data = preprocess_input(request_metadata)
         
@@ -103,10 +106,7 @@ def validate_openai_request():
         
         # Handle potential non-JSON responses
         if openai_response.status_code == 200:
-            try:
-                return jsonify(openai_response.json())
-            except ValueError:
-                return jsonify({"error": "OpenAI returned a non-JSON response", "response_text": openai_response.text}), 500
+            return jsonify(openai_response.json())
         else:
             return jsonify({"error": "OpenAI API returned an error", "status_code": openai_response.status_code, "response_text": openai_response.text}), 500
     
