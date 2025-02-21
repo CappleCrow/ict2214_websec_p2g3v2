@@ -5,7 +5,7 @@ import joblib
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import classification_report, accuracy_score, mean_squared_error
 
 # Load the updated dataset
 file_path = "Updated_Dataset.csv"
@@ -75,8 +75,17 @@ important_factors = {features[i]: feature_importances[i] for i in range(len(feat
 # Model Evaluation
 accuracy = accuracy_score(y_test, y_pred)
 report = classification_report(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
 
 # Save the trained model as a pkl file
 model_file_path = "XGBoost_Anomaly_Model.pkl"
 with open(model_file_path, 'wb') as model_file:
     pickle.dump(model, model_file)
+
+# Print results
+print("Model Accuracy:", accuracy)
+print("Classification Report:\n", report)
+print("Mean Squared Error (MSE):", mse)
+print("Feature Importances:")
+for key, value in sorted(important_factors.items(), key=lambda x: x[1], reverse=True):
+    print(f"{key}: {value:.4f}")

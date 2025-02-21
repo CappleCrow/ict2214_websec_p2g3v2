@@ -93,8 +93,8 @@ def validate_openai_request():
             "Rate Limiting": int(request.headers.get("x-ratelimit-remaining-requests", 100)),
             "Endpoint Entropy": np.random.uniform(0.1, 1.0),
             "HTTP Method": request.method,
-            "API Endpoint": "/data", #not legit
-            # "API Endpoint": "/v1/chat/completions", #legit
+            # "API Endpoint": "/data", #not legit
+            "API Endpoint": "/v1/chat/completions", #legit
             "HTTP Status": 200,
             "User-Agent": request.headers.get("User-Agent", "Unknown"),
             "Token Used": data.get("max_tokens", 0),
@@ -102,20 +102,20 @@ def validate_openai_request():
             "Time of Day": "Afternoon"
         }
 
-        if total_tokens > 30:
-            return jsonify({"status": "blocked", "reason": f"Excessive Token Usage, Request Used {total_tokens} tokens"}), 403
+        # if total_tokens > 30:
+        #     return jsonify({"status": "blocked", "reason": f"Excessive Token Usage, Request Used {total_tokens} tokens"}), 403
 
-        # Apply updated rules
-        night_times = ['Night']
-        if request_metadata["Time of Day"] in night_times:
-            return jsonify({"status": "blocked", "reason": "Request made at Night time"}), 403
+        # # Apply updated rules
+        # night_times = ['Night']
+        # if request_metadata["Time of Day"] in night_times:
+        #     return jsonify({"status": "blocked", "reason": "Request made at Night time"}), 403
         
-        if request_metadata["Token Used"] > 10000:
-            return jsonify({"status": "blocked", "reason": "Excessive Token Usage"}), 403
+        # if request_metadata["Token Used"] > 10000:
+        #     return jsonify({"status": "blocked", "reason": "Excessive Token Usage"}), 403
         
-        unconventional_agents = ['Python-requests', 'curl', 'PostmanRuntime', 'Scrapy', 'Java']
-        if any(ua in request_metadata["User-Agent"] for ua in unconventional_agents):
-            return jsonify({"status": "blocked", "reason": "Unconventional User-Agent"}), 403
+        # unconventional_agents = ['Python-requests', 'curl', 'PostmanRuntime', 'Scrapy', 'Java']
+        # if any(ua in request_metadata["User-Agent"] for ua in unconventional_agents):
+        #     return jsonify({"status": "blocked", "reason": "Unconventional User-Agent"}), 403
 
         # Preprocess input for the AI model
         processed_data = preprocess_input(request_metadata)

@@ -28,7 +28,7 @@ response = requests.post(gateway_url, json=test_payload, headers=headers)
 print("🚀 API Gateway Response:", response.json())
 response_data = response.json()
 
-#if response.json()['reason'] == 'Suspicious activity detected by AI model.':
+# if response.json()['reason'] == 'Suspicious activity detected by AI model.':
 if 'status' in response_data and response_data['status'] == 'blocked':
     filename = 'report.pdf'
     documentitle = 'Suspicious Activity Detected'
