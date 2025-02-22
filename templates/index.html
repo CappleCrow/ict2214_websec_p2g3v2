@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malicious API Spammer</title>
+    <script>
+        function sendRequest() {
+            const apiKey = document.getElementById('api_key').value;
+            const formData = new FormData();
+            formData.append("api_key", apiKey);
+
+            fetch('/send_request', { 
+                method: 'POST', 
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('response').innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <h2>Malicious API Spammer</h2>
+    <label for="api_key">Enter API Key:</label>
+    <input type="text" id="api_key" placeholder="Enter API key here">
+    <button onclick="sendRequest()">Send API Request</button>
+    <pre id="response"></pre>
+</body>
+</html>
