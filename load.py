@@ -8,6 +8,7 @@ from flask import Flask, request, jsonify
 from keyrecognition import test_api_key  # Import updated function
 from pathlib import Path
 import tiktoken
+import re
 
 MODEL_DIR = Path(__file__).parent
 
@@ -76,6 +77,11 @@ def calculate_tokens(messages):
 def validate_openai_request():
     """ API Gateway Endpoint to analyze OpenAI requests """
     data = request.json
+    
+    # Check if the client IP is allowed
+    client_ip = request.remote_addr
+    if not re.match(r"^192\.168\.\d{1,3}\.\d{1,3}$", client_ip):
+        return jsonify({"status": "blocked", "reason": "IP not allowed"}), 403
     
     try:
         # Check API Key Validity
