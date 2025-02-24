@@ -116,9 +116,6 @@ def validate_openai_request():
         # if request_metadata["Time of Day"] in night_times:
         #     return jsonify({"status": "blocked", "reason": "Request made at Night time"}), 403
         
-        # if request_metadata["Token Used"] > 10000:
-        #     return jsonify({"status": "blocked", "reason": "Excessive Token Usage"}), 403
-        
         # unconventional_agents = ['Python-requests', 'curl', 'PostmanRuntime', 'Scrapy', 'Java']
         # if any(ua in request_metadata["User-Agent"] for ua in unconventional_agents):
         #     return jsonify({"status": "blocked", "reason": "Unconventional User-Agent"}), 403

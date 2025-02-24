@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 import random
-import requests
 import numpy as np
 from faker import Faker
 from datetime import datetime
