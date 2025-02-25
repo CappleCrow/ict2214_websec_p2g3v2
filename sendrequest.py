@@ -25,11 +25,12 @@ headers = {
 
 response = requests.post(gateway_url, json=test_payload, headers=headers)
 
-print("🚀 API Gateway Response:", response.json())
+# API Response Data
 response_data = response.json()
 
+
 # if response.json()['reason'] == 'Suspicious activity detected by AI model.':
-if 'status' in response_data and response_data['status'] == 'blocked':
+if 'status' in response_data and response_data['status'] == 'blocked' and response.json()['reason'] == 'Suspicious activity detected by AI model.':
     filename = 'report.pdf'
     documentitle = 'Suspicious Activity Detected'
     title = 'API Protection Intelligence Report'
@@ -49,3 +50,7 @@ if 'status' in response_data and response_data['status'] == 'blocked':
 
     pdf.save()
     print("✅ Report generated successfully as", filename)
+
+else:
+    message_content = response_data['choices'][0]['message']['content']
+    print("Message Content Response:", message_content)

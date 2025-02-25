@@ -78,10 +78,10 @@ def validate_openai_request():
     """ API Gateway Endpoint to analyze OpenAI requests """
     data = request.json
     
-    # Check if the client IP is allowed
-    client_ip = request.remote_addr
-    if not re.match(r"^192\.168\.\d{1,3}\.\d{1,3}$", client_ip):
-        return jsonify({"status": "blocked", "reason": "IP not allowed"}), 403
+    # # Check if the client IP is allowed
+    # client_ip = request.remote_addr
+    # if not re.match(r"^192\.168\.\d{1,3}\.\d{1,3}$", client_ip):
+    #     return jsonify({"status": "blocked", "reason": "IP not allowed"}), 403
     
     try:
         # Check API Key Validity
