@@ -18,8 +18,8 @@ test_payload = {
 headers = {
     "Authorization": "Bearer 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",
     "Content-Type": "application/json",
-    # "User-Agent": "curl/7.64.1",
-    "User-Agent": "Mozilla/5.0",
+    "User-Agent": "curl/7.64.1",
+    # "User-Agent": "Mozilla/5.0",
     "x-ratelimit-remaining-requests": "198"
 }
 

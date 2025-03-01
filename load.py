@@ -9,6 +9,7 @@ from keyrecognition import test_api_key  # Import updated function
 from pathlib import Path
 import tiktoken
 import re
+import datetime
 
 MODEL_DIR = Path(__file__).parent
 
@@ -16,7 +17,8 @@ model_paths = {
     'xgboost': str(MODEL_DIR / 'XGBoost_Anomaly_Model.pkl'),
     'scaler': MODEL_DIR / 'scaler.pkl',
     'label_encoder': MODEL_DIR / 'label_encoder.pkl',
-    'rf_model': MODEL_DIR / 'random_forest_api_key_model_v1.5.0.pkl'
+    'rf_model': MODEL_DIR / 'random_forest_api_key_model_v1.5.0.pkl',
+    'api_keys': MODEL_DIR / 'api_keys_dataset.csv'  # Add the path to the API keys dataset
 }
 
 # Load the trained models and preprocessing tools
@@ -24,6 +26,10 @@ xgb_model = pickle.load(open(model_paths['xgboost'], 'rb'))
 scaler = joblib.load(model_paths['scaler'])
 label_encoders = joblib.load(model_paths['label_encoder'])
 rf_model = joblib.load(model_paths['rf_model'])
+
+# Load the API key dataset (assuming it's in CSV format)
+api_key_data = pd.read_csv(model_paths['api_keys'])
+api_key_dict = dict(zip(api_key_data['key'], api_key_data['label']))
 
 # Flask API Gateway
 app = Flask(__name__)
@@ -72,21 +78,33 @@ def calculate_tokens(messages):
     except Exception as e:
         print(f"Cannot calculate tokens: {str(e)}")
         return 0
+
+def validate_api_key(api_key):
+    """ Validate the API key using the loaded model and dataset """
+    if api_key in api_key_dict:
+        return api_key_dict[api_key]
+    else:
+        return "Invalid API Key"
     
+def categorize_time_of_day():
+    """Categorizes the time of day based on the current server time"""
+    current_hour = datetime.datetime.now().hour
+    if 5 <= current_hour < 12:
+        return "Morning"
+    elif 12 <= current_hour < 18:
+        return "Afternoon"
+    else:
+        return "Night"
+
 @app.route('/validate_openai_request', methods=['POST'])
 def validate_openai_request():
     """ API Gateway Endpoint to analyze OpenAI requests """
     data = request.json
     
-    # # Check if the client IP is allowed
-    # client_ip = request.remote_addr
-    # if not re.match(r"^192\.168\.\d{1,3}\.\d{1,3}$", client_ip):
-    #     return jsonify({"status": "blocked", "reason": "IP not allowed"}), 403
-    
     try:
         # Check API Key Validity
         api_key = request.headers.get("Authorization", "").replace("Bearer ", "")
-        key_validity = test_api_key(api_key, rf_model)
+        key_validity = validate_api_key(api_key)
         
         if key_validity != "Valid OpenAI":
             return jsonify({"status": "blocked", "reason": "Invalid API Key"}), 403
@@ -94,31 +112,21 @@ def validate_openai_request():
         messages = data.get("messages", [])
         total_tokens = calculate_tokens(messages)
 
+        # Determine Time of Day based on server's system time
+        time_of_day = categorize_time_of_day()
+
         # Extract request metadata for classification
         request_metadata = {
             "Rate Limiting": int(request.headers.get("x-ratelimit-remaining-requests", 100)),
             "Endpoint Entropy": np.random.uniform(0.1, 1.0),
             "HTTP Method": request.method,
-            # "API Endpoint": "/data", #not legit
-            "API Endpoint": "/v1/chat/completions", #legit
+            "API Endpoint": "/v1/chat/completions",  # Legit endpoint
             "HTTP Status": 200,
             "User-Agent": request.headers.get("User-Agent", "Unknown"),
             "Token Used": data.get("max_tokens", 0),
             "Method_POST": 1 if request.method == "POST" else 0,
-            "Time of Day": "Afternoon"
+            "Time of Day": time_of_day
         }
-
-        # if total_tokens > 30:
-        #     return jsonify({"status": "blocked", "reason": f"Excessive Token Usage, Request Used {total_tokens} tokens"}), 403
-
-        # # Apply updated rules
-        # night_times = ['Night']
-        # if request_metadata["Time of Day"] in night_times:
-        #     return jsonify({"status": "blocked", "reason": "Request made at Night time"}), 403
-        
-        # unconventional_agents = ['Python-requests', 'curl', 'PostmanRuntime', 'Scrapy', 'Java']
-        # if any(ua in request_metadata["User-Agent"] for ua in unconventional_agents):
-        #     return jsonify({"status": "blocked", "reason": "Unconventional User-Agent"}), 403
 
         # Preprocess input for the AI model
         processed_data = preprocess_input(request_metadata)
@@ -148,7 +156,11 @@ def validate_openai_request():
         if openai_response.status_code == 200:
             return jsonify(openai_response.json())
         else:
-            return jsonify({"error": "OpenAI API returned an error", "status_code": openai_response.status_code, "response_text": openai_response.text}), 500
+            return jsonify({
+                "error": "OpenAI API returned an error",
+                "status_code": openai_response.status_code,
+                "response_text": openai_response.text
+            }), 500
     
     except Exception as e:
         return jsonify({"error": str(e)}), 400
