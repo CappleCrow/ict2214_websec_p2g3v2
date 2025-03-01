@@ -4,22 +4,32 @@ import requests
 from reportlab.pdfgen import canvas
 from openai import OpenAI  # For DeepSeek API calls
 import anthropic  # Import the Anthropi­c package
+import cohere  # Import the Cohere package
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # For session management
 
 OPENAI_API_URL = "https://api.openai.com/v1/chat/completions"
-ANTHROPIC_MODEL = "claude-3-7-sonnet-20250219"  # Example Anthropic model name
+ANTHROPIC_MODEL = "claude-3-7-sonnet-20250219"  
 
-# Function for DeepSeek API using the OpenAI client interface
-def call_deepseek_api(api_key, messages):
-    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
-    response = client.chat.completions.create(
-        model="deepseek-chat",
-        messages=messages,
-        stream=False
+def call_cohere_api(api_key, messages):
+    import cohere
+    co = cohere.ClientV2(api_key=api_key)
+    res = co.chat(
+        model="command-r-plus-08-2024",  
+        messages=messages
     )
-    return response
+
+    response_text = ""
+    for item in res.message.content:
+        if item.type == "text":
+            response_text += item.text  
+
+   
+    response_text = response_text.strip()
+    return response_text
+
+
 
 # Updated function for Anthropi­c API using the official client
 def call_anthropic_api(api_key, messages):
@@ -35,7 +45,9 @@ def call_anthropic_api(api_key, messages):
 @app.route("/", methods=["GET", "POST"])
 def home():
     if "conversation" not in session:
-        session["conversation"] = []  # Store chat history in session
+        session["conversation"] = [] 
+
+        print("Debug: session conversation:", session["conversation"])
 
     response_text = ""
     error_message = ""
@@ -49,18 +61,18 @@ def home():
             error_message = "API Key and Message are required!"
             return render_template("validate_openai_request.html", response_text="", error_message=error_message, conversation=[])
 
-        # Append user message to session history
+        
         session["conversation"].append({"role": "user", "content": user_message})
         session.modified = True
 
-        if provider.lower() == "deepseek":
+        if provider.lower() == "cohere":
             try:
-                response_data = call_deepseek_api(api_key, session["conversation"])
-                response_text = response_data.choices[0].message.content.strip()
+                response_text = call_cohere_api(api_key, session["conversation"])
                 session["conversation"].append({"role": "assistant", "content": response_text})
                 session.modified = True
             except Exception as e:
-                error_message = f"DeepSeek API request failed: {str(e)}"
+                error_message = f"Cohere API request failed: {str(e)}"
+
         elif provider.lower() == "anthropic":
             try:
                 response_message = call_anthropic_api(api_key, session["conversation"])
