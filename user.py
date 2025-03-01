@@ -5,6 +5,8 @@ from reportlab.pdfgen import canvas
 from openai import OpenAI  # For DeepSeek API calls
 import anthropic  # Import the Anthropi­c package
 import cohere  # Import the Cohere package
+import asyncio
+import fastapi_poe as fp
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)  # For session management
@@ -29,8 +31,6 @@ def call_cohere_api(api_key, messages):
     response_text = response_text.strip()
     return response_text
 
-
-
 # Updated function for Anthropi­c API using the official client
 def call_anthropic_api(api_key, messages):
     client = anthropic.Anthropic(api_key=api_key)
@@ -41,6 +41,59 @@ def call_anthropic_api(api_key, messages):
         messages=messages
     )
     return response_message
+
+async def call_poe_api(api_key, messages):
+    #convert messages to format expected by POE
+    poe_messages = []
+
+    for message in messages:
+        role = message.get("role", "user")
+        if role == "assistant":
+            role == "bot"
+        elif role not in ["user", "bot", "system"]:
+            role = "user"
+        poe_messages.append(fp.ProtocolMessage(
+            role=role,
+            content=message.get("content", "")))
+    
+    #collect the response from the POE API
+    full_response = ""
+    try:
+        async for partial in fp.get_bot_response(
+            messages=poe_messages,
+            bot_name="gpt-4o-mini",
+            api_key=api_key
+        ):
+            # extract text content from PartialResponse object
+            if hasattr(partial, "text"):
+                full_response += partial.text
+            elif isinstance(partial, str):
+                full_response += partial
+            else:
+                full_response += str(partial)
+            #full_response += partial.message.content #maybe partial.message.content
+    except Exception as e:
+        print(f"POE API request from async failed: {str(e)}")
+        print("Messages being sent")
+        for i, msg in enumerate(poe_messages):
+            print(f"message{i+1}: {msg.role}: {msg.content[:30]}...")
+        raise Exception(f"POE API request from async failed: {str(e)}")
+    
+    return full_response
+
+def prepare_poe_messages(messages):
+    """Convert regular convo history to compatible format"""
+    poe_messages = []
+    for message in messages:
+        role = message.get("role", "user")
+        if role == "assistant":
+            poe_role = "bot"
+        elif role == "system":
+            poe_role = "system"
+        else:
+            poe_role = "user"
+        poe_messages.append({"role": poe_role, "content": message.get("content", "")})
+    return poe_messages
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -81,6 +134,22 @@ def home():
                 session.modified = True
             except Exception as e:
                 error_message = f"Anthropic API request failed: {str(e)}"
+        elif provider.lower() == "poe":
+            try:
+                # create new asyncio event loop
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+
+                #use copy of convo with proper formatting
+                poe_convo = prepare_poe_messages(session["conversation"])
+                # run async function in event loop
+                response_text = loop.run_until_complete(call_poe_api(api_key, poe_convo))
+                loop.close()
+
+                session["conversation"].append({"role": "assistant", "content": response_text})
+                session.modified = True
+            except Exception as e:
+                error_message = f"POE API request failed: {str(e)}"
         else:
             # OpenAI API request payload
             payload = {
