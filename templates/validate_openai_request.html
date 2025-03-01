@@ -16,6 +16,16 @@
                 <input type="text" id="api_key" name="api_key" class="form-control" required>
             </div>
 
+        
+            <div class="mb-3">
+                <label for="provider" class="form-label">API Provider:</label>
+                <select id="provider" name="provider" class="form-select">
+                    <option value="openai" selected>OpenAI</option>
+                    <option value="google">Google</option>
+                    <option value="anthropic">Anthropic</option>
+                </select>
+            </div>
+
             <div class="mb-3">
                 <label for="user_message" class="form-label">Your Message:</label>
                 <input type="text" id="user_message" name="user_message" class="form-control" required>

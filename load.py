@@ -16,7 +16,7 @@ model_paths = {
     'xgboost': str(MODEL_DIR / 'XGBoost_Anomaly_Model.pkl'),
     'scaler': MODEL_DIR / 'scaler.pkl',
     'label_encoder': MODEL_DIR / 'label_encoder.pkl',
-    'rf_model': MODEL_DIR / 'random_forest_api_key_model.pkl'
+    'rf_model': MODEL_DIR / 'random_forest_api_key_model_v1.5.0.pkl'
 }
 
 # Load the trained models and preprocessing tools

@@ -44,7 +44,7 @@ def extract_features(df):
     
     # Feature: Regex match for Anthropic format
     df['matches_anthropic_format'] = df['key'].apply(
-        lambda x: bool(re.match(r'^sk-ant-api03-[A-Za-z0-9_]{48}$', x))
+    lambda x: bool(re.match(r'^sk-ant-api03-[A-Za-z0-9_-]{95}$', x))
     ).astype(int)
     
     return df
@@ -71,12 +71,6 @@ y_pred = clf.predict(X_test)
 print("Accuracy:", accuracy_score(y_test, y_pred))
 # print("\nClassification Report:\n", classification_report(y_test, y_pred))
 
-# Feature Importances
-feature_importances = pd.DataFrame({
-    'Feature': X.columns,
-    'Importance': clf.feature_importances_
-}).sort_values(by='Importance', ascending=False)
-# print("\nFeature Importances:\n", feature_importances)
 
 # Save the model (optional, for deployment)
 import joblib
@@ -95,7 +89,7 @@ def test_api_key(key, model):
         'non_alphanumeric_count': sum(not c.isalnum() and c not in "-_" for c in key),
         'matches_openai_format': int(bool(re.match(r'^sk-proj-([A-Za-z0-9]{10,20}-){4}[A-Za-z0-9]{10,20}$', key))),
         'matches_google_format': int(bool(re.match(r'^AIza[0-9A-Za-z_-]{35}$', key))),
-        'matches_anthropic_format': int(bool(re.match(r'^sk-ant-api03-[A-Za-z0-9_]{48}$', key)))
+        'matches_anthropic_format': int(bool(re.match(r'^sk-ant-api03-[A-Za-z0-9_-]{95}$', key)))
     }
     
     # Convert to DataFrame for prediction
@@ -106,14 +100,13 @@ def test_api_key(key, model):
     return prediction
 
 
-# Example of testing individual keys
+# Example of testing individual keys, insert the keys inside the array to test manually if they correctly detect the key is valid or invalid.
 example_keys = [
-    "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",  # Valid OpenAI
-    "sk-proj-m3GIyXF@thlvQPNP-bHjeb-JoZrkgN28RCjtauKxCw-bJw5yz8mzaEtfKZOqhj71R8PCQovBOtT3BlbkFJ-K9wdZb6lDzCpHpmEFY8NLqE58vEzQPFajnAtlOhZGtx5lm7sXJs8-wjnVAaZxz2H6eiqu0hM3",  # Invalid OpenAI
-    "AIzaS&1234567890-abcdefGHIJKLmnopQRSTU",  # Invalid Google
-    "AIzaSy1234567890-abcdefGHIJKLmnopQRSTU",  # Invalid Google
-    "s-ant-api03-wcw7Evb_bgje4hjQebOZYAd6sLVMUuiTPpLEzA8s_bN3kW0k",  # Valid Anthropic
-    "sk-ant-api03-wcw7E1b_bgje4hjQebOZYAd6sLVMU1&TPpLEzA8s1bN3kW0k"   # Invalid Anthropic
+    # Insert Valid OpenAI
+    # Insert Invalid Google
+    # Insert Invalid Google
+    # Insert Valid Anthropic
+    # Insert Invalid Anthropic
 ]
 
 print("\nTesting Individual Keys:")

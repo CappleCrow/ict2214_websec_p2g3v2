@@ -8,7 +8,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.metrics import classification_report, accuracy_score, mean_squared_error
 
 # Load the updated dataset
-file_path = "Updated_Dataset.csv"
+file_path = "ict2214_websec_p2g3/Updated_Dataset.csv"
 df = pd.read_csv(file_path)
 
 # Drop unnecessary columns (like index if present)
