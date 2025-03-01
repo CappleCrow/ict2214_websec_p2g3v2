@@ -59,7 +59,7 @@ def home():
 
         if not api_key or not user_message:
             error_message = "API Key and Message are required!"
-            return render_template("validate_openai_request.html", response_text="", error_message=error_message, conversation=[])
+            return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[])
 
         
         session["conversation"].append({"role": "user", "content": user_message})
@@ -98,18 +98,18 @@ def home():
                 response_data = response.json()
                 if "error" in response_data:
                     error_message = response_data["error"]["message"]
-                    return render_template("validate_openai_request.html", response_text="", error_message=error_message, conversation=[])
+                    return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[])
                 if "status" in response_data and response_data["status"] == "blocked":
                     generate_pdf_report(response_data)
                     error_message = "🚨 Suspicious activity detected. A report has been generated."
-                    return render_template("validate_openai_request.html", response_text="", error_message=error_message, conversation=[])
+                    return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[])
                 response_text = response_data["choices"][0]["message"]["content"].strip()
                 session["conversation"].append({"role": "assistant", "content": response_text})
                 session.modified = True
             except requests.exceptions.RequestException as e:
                 error_message = f"API request failed: {str(e)}"
 
-    return render_template("validate_openai_request.html", response_text=response_text, error_message=error_message, conversation=session["conversation"])
+    return render_template("validate_api_request.html", response_text=response_text, error_message=error_message, conversation=session["conversation"])
 
 @app.route("/clear", methods=["POST"])
 def clear_chat():
