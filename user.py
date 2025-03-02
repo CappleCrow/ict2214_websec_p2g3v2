@@ -3,7 +3,7 @@ import os
 import requests
 from reportlab.pdfgen import canvas
 import anthropic  # Import the Anthropic package
-import cohere  # Import the Cohere package
+import cohere     # Import the Cohere package
 import asyncio
 import fastapi_poe as fp
 import pandas as pd
@@ -15,9 +15,10 @@ from pathlib import Path
 import tiktoken
 import datetime
 import re
+from faker import Faker
+import random
 
 # -------------------- Model and Preprocessing Setup --------------------
-# Set up model directory and paths
 MODEL_DIR = Path(__file__).parent
 model_paths = {
     'xgboost': str(MODEL_DIR / 'XGBoost_Anomaly_Model.pkl'),
@@ -33,7 +34,6 @@ label_encoders = joblib.load(model_paths['label_encoder'])
 rf_model = joblib.load(model_paths['rf_model'])
 
 # -------------------- Functions for Request Metadata --------------------
-# Define categorical columns expected by the anomaly model
 categorical_cols = ["HTTP Method", "API Endpoint", "User-Agent", "Time of Day"]
 
 def preprocess_input(data):
@@ -58,7 +58,7 @@ def calculate_tokens(messages):
             num_tokens += 4
             for key, value in message.items():
                 num_tokens += len(encoding.encode(str(value)))
-                if key == "name":  # adjust if a "name" field is present
+                if key == "name":
                     num_tokens -= 1
         num_tokens += 2
         return num_tokens
@@ -79,7 +79,7 @@ def categorize_time_of_day():
 # -------------------- API Key Feature Extraction and Validation --------------------
 def extract_api_key_features(api_key):
     """
-    Extract 11 features from the API key:
+    Extract 10 features from the API key:
       1. length: Length of the key.
       2. starts_with_sk_proj: 1 if key starts with 'sk-proj-', else 0.
       3. starts_with_ant: 1 if key starts with 'sk-ant-api03-', else 0.
@@ -128,25 +128,36 @@ def test_api_key(key, model):
     input_features = extract_api_key_features(key)
     prediction = model.predict(input_features)[0]
     return prediction
-
-def validate_api_key(api_key):
-    """
-    Validate the API key using the preloaded random forest model (rf_model).
-    Returns one of "Valid OpenAI", "Valid Cohere", "Valid Anthropic", "Valid Poe"
-    if the prediction corresponds to one of the valid classes; otherwise "Invalid API Key".
-    Adjust the mapping based on your training.
-    """
-    prediction = test_api_key(api_key, rf_model)
-    if prediction == "Valid OpenAI":
-        return "Valid OpenAI"
-    elif prediction == "Valid Cohere":
-        return "Valid Cohere"
-    elif prediction == "Valid Anthropic":
-        return "Valid Anthropic"
-    elif prediction == "Valid Poe":
-        return "Valid Poe"
+# -------------------- Logging Setup --------------------
+def log_api_request(api_key, request_metadata):
+    """Log the API request details to a CSV file using actual IP and User-Agent."""
+    log_file = "api_requests_log.csv"
+    # Use actual IP from the request
+    actual_ip = request.remote_addr or "N/A"
+    # Use actual User-Agent from the request headers
+    actual_user_agent = request.headers.get("User-Agent", "Unknown")
+    new_time_of_access = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
+    masked_api_key = api_key[:8] + "*****" if api_key else "N/A"
+    
+    log_data = {
+        "Rate Limiting": request_metadata.get("Rate Limiting"),
+        "Endpoint Entropy": request_metadata.get("Endpoint Entropy"),
+        "HTTP Method": request_metadata.get("HTTP Method"),
+        "API Endpoint": request_metadata.get("API Endpoint"),
+        "HTTP Status": request_metadata.get("HTTP Status"),
+        "User-Agent": actual_user_agent,
+        "Token Used": request_metadata.get("Token Used"),
+        "Method_POST": request_metadata.get("Method_POST"),
+        "Time of Day": request_metadata.get("Time of Day"),
+        "API_Key": masked_api_key,
+        "New Time of Access": new_time_of_access,
+        "IP": actual_ip
+    }
+    df = pd.DataFrame([log_data])
+    if not os.path.exists(log_file):
+        df.to_csv(log_file, index=False)
     else:
-        return "Invalid API Key"
+        df.to_csv(log_file, mode='a', header=False, index=False)
 
 # -------------------- Flask App Setup --------------------
 app = Flask(__name__)
@@ -157,37 +168,6 @@ ANTHROPIC_MODEL = "claude-3-7-sonnet-20250219"
 
 def call_cohere_api(api_key, messages):
     co = cohere.ClientV2(api_key=api_key)
-    res = co.chat(model="command-r-plus-08-2024", messages=messages)
-    return "".join([item.text for item in res.message.content if item.type == "text"]).strip()
-
-def call_anthropic_api(api_key, messages):
-    client = anthropic.Anthropic(api_key=api_key)
-    response_message = client.messages.create(model=ANTHROPIC_MODEL, max_tokens=1024, messages=messages)
-    return response_message
-
-async def call_poe_api(api_key, messages):
-    poe_messages = [fp.ProtocolMessage(role=msg.get("role", "user"), content=msg.get("content", "")) for msg in messages]
-    full_response = ""
-    try:
-        async for partial in fp.get_bot_response(messages=poe_messages, bot_name="gpt-4o-mini", api_key=api_key):
-            full_response += getattr(partial, "text", str(partial))
-    except Exception as e:
-        raise Exception(f"POE API request failed: {str(e)}")
-    return full_response
-
-def prepare_poe_messages(messages):
-    return [{"role": msg.get("role", "user"), "content": msg.get("content", "")} for msg in messages]
-
-# -------------------- Routes for HTML-based Interface --------------------
-app = Flask(__name__)
-app.secret_key = os.urandom(24)
-
-OPENAI_API_URL = "https://api.openai.com/v1/chat/completions"
-ANTHROPIC_MODEL = "claude-3-7-sonnet-20250219"
-
-def call_cohere_api(api_key, messages):
-    co = cohere.ClientV2(api_key=api_key)
-    # Filter out any messages with empty content
     filtered_messages = [msg for msg in messages if msg.get("content", "").strip() != ""]
     res = co.chat(model="command-r-plus-08-2024", messages=filtered_messages)
     return "".join([item.text for item in res.message.content if item.type == "text"]).strip()
@@ -198,7 +178,6 @@ def call_anthropic_api(api_key, messages):
     return response_message
 
 async def call_poe_api(api_key, messages):
-    # Map "assistant" to "bot" for POE, since only 'system', 'user', or 'bot' are allowed.
     mapped_messages = []
     for msg in messages:
         role = msg.get("role", "user")
@@ -215,7 +194,6 @@ async def call_poe_api(api_key, messages):
     return full_response
 
 def prepare_poe_messages(messages):
-    # Map "assistant" to "bot" for POE messages.
     mapped_messages = []
     for msg in messages:
         role = msg.get("role", "user")
@@ -241,8 +219,8 @@ def home():
         session["conversation"].append({"role": "user", "content": user_message})
         session.modified = True
         # Validate API Key using the model-based function
-        key_validity = validate_api_key(api_key)
-        if key_validity not in ["Valid OpenAI", "Valid Cohere", "Valid Anthropic", "Valid Poe"]:
+        prediction = test_api_key(api_key, rf_model)
+        if prediction not in ["Valid OpenAI", "Valid Cohere", "Valid Anthropic", "Valid Poe"]:
             error_message = "Invalid API Key"
             return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[])
         endpoint_mapping = {
@@ -282,8 +260,10 @@ def home():
                     "User-Agent": request.headers.get("User-Agent", "Unknown"),
                     "Token Used": total_tokens,
                     "Method_POST": 1 if request.method.upper() == "POST" else 0,
-                    "Time of Day": time_of_day
+                    "Time of Day": "Morning"
                 }
+                # Log the API request
+                log_api_request(api_key, request_metadata)
                 processed_data = preprocess_input(request_metadata)
                 predicted_class = xgb_model.predict(processed_data)[0]
                 if predicted_class == 1:
@@ -307,5 +287,6 @@ def home():
 def clear_chat():
     session.pop("conversation", None)
     return jsonify({"message": "Chat history cleared!"})
+
 if __name__ == "__main__":
     app.run(debug=True)

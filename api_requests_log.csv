@@ -1,0 +1,6 @@
+Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,Token Used,Method_POST,Time of Day,API_Key,New Time of Access,IP
+100,0.5,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",13,1,Night,sk-proj-*****,03/03/2025 01:47,127.0.0.1
+100,0.5,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",13,1,Morning,sk-proj-*****,03/03/2025 01:49,127.0.0.1
+100,0.5,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",13,1,Morning,sk-proj-*****,03/03/2025 01:49,127.0.0.1
+100,0.5,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",485,1,Morning,sk-proj-*****,03/03/2025 01:50,127.0.0.1
+100,0.5,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",13535,1,Morning,sk-proj-*****,03/03/2025 01:53,127.0.0.1
