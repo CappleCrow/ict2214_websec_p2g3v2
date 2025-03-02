@@ -608,20 +608,20 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 136,0.27506024,POST,noisy_value_83,200,Mozilla/5.0,621,1,Afternoon,1,19/2/2025 14:16,sk-proj-vsq0SVj6IaMZjAcC8xWoe2AK3OEUUYD6PTA4ke6hTj1Jgf2H
 133,0.159333049,POST,/data,200,PostmanRuntime/7.29.0,239,1,Night,1,19/2/2025 4:43,sk-ant-api03-S6Q8kBsQsric6gCzgMEH61aNQ8uzZqI3VPZY0fkNDCgnZOcK
 42,0.351635071,POST,/api/product,429,PostmanRuntime/7.29.0,388,1,Night,1,19/2/2025 1:05,sk-proj-AwDxVDzNhDvN3RVXYJYHcBSMeeiUklfBl2YbK60JYXJAUZSH
-133,0.324600325,POST,noisy_value_248,403,noisy_value_704,1203,1,Evening,0,2/5/2024 18:12,sk-proj-5lQnv50kUB3zT60CpxqJAzvRYjd4TD01SWucCCnRuItLjZqi
+133,0.324600325,POST,noisy_value_248,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1203,1,Evening,0,2/5/2024 18:12,sk-proj-5lQnv50kUB3zT60CpxqJAzvRYjd4TD01SWucCCnRuItLjZqi
 78,0.535475534,POST,/signup,429,curl/7.64.1,891,1,Afternoon,1,19/2/2025 13:38,sk-proj-C7GfqQkwUKZ2JH0VWY0bg0LM6r5eSEnoU4qmI8JIRMf45Jiw
 105,0.335085515,POST,/data,200,Mozilla/5.0,955,1,Night,1,19/2/2025 0:28,sk-proj-e46koi3d5MQ4B2KQSJLhQ33ls5XElTUFTEGkdCcYPzylnR5q
 129,0.696177916,POST,/v1/chat/completions,403,noisy_value_13,3326,1,Morning,1,22/10/2023 11:06,sk-proj-Wz2LsZAHajlKRrAj6FCPXjBTRGQ7CwNxtXBGssjpu3qvCPyv
 50,0.271393,POST,/signup,500,Mozilla/5.0,1469,1,Morning,1,19/2/2025 10:11,sk-proj-JZeneDjagxEtY4UQ5Li5jwnxGweOcqqWK2n0UziQvqGgS6Px
 383,0.486681,POST,/signup,255,noisy_value_649,600,1,Night,1,19/2/2025 2:12,sk-ant-api03-vCJAZeqXiPM7nOS6Dh94ExEePkDNtMBmPjc8xNTChBdM9Khh
-100,0.310861904,POST,/v1/chat/completions,200,Python-requests/2.25.1,1442,1,Morning,0,29/10/2023 11:46,sk-ant-api03-li_ywMRG1kdbRYD6qgjZYI58FLiER8135MXJARIUbQxcc3vj
+100,0.310861904,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1442,1,Morning,0,29/10/2023 11:46,sk-ant-api03-li_ywMRG1kdbRYD6qgjZYI58FLiER8135MXJARIUbQxcc3vj
 11,0.297695709,POST,/api/product,385,PostmanRuntime/7.29.0,224,1,Morning,1,19/2/2025 10:38,sk-proj-SSJaQed1fx4ZsTBbcgcIDG2YcHZCQfEpsc2KBEKF9cYfTuQP
 74,0.467470557,POST,noisy_value_781,403,PostmanRuntime/7.29.0,1721,1,Night,1,4/7/2025 23:26,sk-proj-h5FLhiFf1W7XeC1XEFVYuhjFWEZFTWFQAxvFStabih1W5rcN
 60,0.934360769,POST,/v1/authenticate,429,noisy_value_91,1401,1,Morning,1,19/2/2025 7:48,sk-ant-api03-ojGodFmSw_76PHkkkQ3UY0b0869g0M7GnDXQwA_3nyUpBGvW
 79,0.935827957,POST,/v1/chat/completions,200,PostmanRuntime/7.29.0,738,1,Night,1,9/11/2025 21:36,sk-proj-kIQpkpSltgSux6S31JZbXr2Sla05E5VCBxxgIGc4oHYvddQB
 146,0.57332702,POST,noisy_value_659,429,PostmanRuntime/7.29.0,2115,1,Evening,1,19/2/2025 17:41,sk-proj-fOOW7RMrYYW0Z2lD5l6GmUZQyYIILhKoFRpA0Bn7yNzrFp9O
 109,0.106261838,POST,/notifications/list,429,Mozilla/5.0,1961,1,Morning,1,19/2/2025 6:23,sk-proj-WrAHin5ZX0xtnyRKK1eF9hehsTGA9u1RxSfW4EF8SWyOi2oC
-16,0.293793059,POST,noisy_value_917,200,curl/7.64.1,74,1,Morning,0,20/10/2023 7:20,sk-ant-api03-rFi7x0JqCrdt4CUQqkaiKJIzBgoyCYFCMN5_DO8zXDNj_wC0
+16,0.293793059,POST,noisy_value_917,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",74,1,Morning,0,20/10/2023 7:20,sk-ant-api03-rFi7x0JqCrdt4CUQqkaiKJIzBgoyCYFCMN5_DO8zXDNj_wC0
 147,0.92517236,POST,/v1/chat/completions,403,Python-requests/2.25.1,2032,1,Night,1,22/12/2025 22:35,sk-ant-api03-Yd_d_ZmSEOWJQneHIKTAHLWIju_3QC3jlQDbWxcyqR4kXjrb
 83,0.157082932,POST,noisy_value_105,403,Mozilla/5.0,519,1,Night,1,19/2/2025 23:49,sk-ant-api03-1Ipr3BfbqI2buw4NJM10SkX76WtlRDTYo2YHhFyoV85TBmwC
 117,0.221356348,POST,/data,429,noisy_value_945,4762,1,Morning,1,19/2/2025 9:25,sk-ant-api03-VbllakqNPG99jBbOo9Zed7G2wKBtYYpPd2HYFcJeBlOHJTSV
@@ -632,7 +632,7 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 114,0.874944001,POST,/v1/chat/completions,219,PostmanRuntime/7.29.0,1135,1,Night,1,19/2/2025 22:44,sk-ant-api03-9OgfHfQUJvtxWx5fdGg6uwFajH49q8h9a8gCiDgbnG7u4wPU
 48,0.114345923,POST,/api/v2/data,403,noisy_value_336,1005,1,Night,1,19/2/2025 2:21,sk-ant-api03-Djk5DrD7PKF0MbXLgSMJbk1POGJInd2w6uAjgsGbZoLQk3LF
 149,0.218619519,POST,noisy_value_923,200,Mozilla/5.0,2114,1,Morning,1,30/3/2024 7:47,sk-proj-FTRFRdLAa9My2TJ4NLV8S7tUphKVrb3AZLP4gU3OL6pNBGpz
-28,0.425542492,POST,noisy_value_517,403,Mozilla/5.0,354,1,Morning,0,31/8/2023 6:20,sk-ant-api03-6pSkIJAOG4fgP8vZP7TuKYh1ZZfsAEw6BG5dLj8KDbQvaQo5
+28,0.425542492,POST,noisy_value_517,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",354,1,Morning,0,31/8/2023 6:20,sk-ant-api03-6pSkIJAOG4fgP8vZP7TuKYh1ZZfsAEw6BG5dLj8KDbQvaQo5
 120,0.117141169,POST,/api/admin,272,noisy_value_704,613,1,Night,1,19/2/2025 4:03,sk-ant-api03-HCZRywVFH4nPENExc4QBypbvJvJCICSxOMgn8FqGVDsR5bJb
 34,0.149122519,POST,noisy_value_189,403,Mozilla/5.0,400,1,Evening,1,19/2/2025 19:21,sk-proj-ooYvbF8n3oBBp6OoXYeVtxIiLbqflmVCImmakd2U8KTMjKN0
 133,0.841606963,POST,/api/product,325,Mozilla/5.0,1254,1,Morning,1,19/2/2025 9:45,sk-ant-api03-_kocngUTLvgqE5KytrorK5NJ7JVjW3WnJe3zEYrtOU2oOTXI
@@ -642,7 +642,7 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 118,0.295271311,POST,/api/product,403,Mozilla/5.0,2274,1,Morning,1,19/2/2025 7:17,sk-proj-By4GmGNVjkAbRkYKKoHXmSWhAXhKeGvx0PI8lIFJEq3kHKOS
 21,0.937457555,POST,/v1/chat/messages,200,noisy_value_588,241,1,Night,1,2/8/2023 3:18,sk-ant-api03-xzoC96eGvIbg_xC6Xb1PLH2gVHa9oWLJIr98cJtCVRF_24xz
 26,0.326129309,POST,/api/admin,362,noisy_value_704,582,1,Morning,1,19/2/2025 8:56,sk-proj-1M2tChNDRPuKaPgiODMOxZ325r4wd5zwkF3YWHWsYskJAnIE
-31,0.811877466,POST,/v1/chat/completions,403,Java/1.8.0_201,528,1,Afternoon,0,21/2/2023 14:06,sk-ant-api03-SuWf824GJxL9_WmTz8oHUxjihc3l_blSbeTdoqVITCGML2sO
+31,0.811877466,POST,/v1/chat/completions,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",528,1,Afternoon,0,21/2/2023 14:06,sk-ant-api03-SuWf824GJxL9_WmTz8oHUxjihc3l_blSbeTdoqVITCGML2sO
 145,0.1418457,POST,noisy_value_917,487,noisy_value_270,3240,1,Night,1,19/2/2025 2:55,sk-ant-api03-ZK1Ryl5Euswbw7s_HTF0SS5ai3REptZ0SiPR18xcPvfxQMFT
 59,0.213160024,POST,noisy_value_694,200,Java/1.8.0_201,782,1,Night,1,25/5/2024 2:56,sk-proj-c7Itt10kZxUauNASVtvYPE08XTW59FQ7cfFtDzRK70dShshO
 26,0.166034257,POST,/v1/chat/completions,222,noisy_value_496,150,1,Night,1,10/4/2025 0:08,sk-proj-G23LAFGj9qpkBxy9uU2miPmqcKwuipWoqOU9R6i13pdrgCnS
@@ -688,12 +688,12 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 41,0.958550458,POST,/api/product,200,noisy_value_182,525,1,Evening,1,19/2/2025 17:51,sk-ant-api03-aBqlh3Al1FrfrFsz0UVNTe_SmxzljBsbxWcdz9XQxrmfuc8K
 105,0.855673025,POST,noisy_value_297,200,noisy_value_420,2436,1,Evening,1,19/2/2025 18:25,sk-proj-1qWRiR88xWVKHkcESE3k8M1NUWDnWmnZNbRjSEarJeF9sj6M
 145,0.513184846,POST,/data,200,PostmanRuntime/7.29.0,1442,1,Night,1,19/2/2025 2:05,sk-ant-api03-TGy2ctWzKZC2WFlE3sAEUtZOWaibzw5o8FRJlDIaWvZpeBka
-51,0.513987182,POST,/v1/chat/completions,200,Mozilla/5.0,1463,1,Morning,0,15/6/2023 10:32,sk-proj-xIA8gusJr6n0EpFHkYlFz7LWbTIvaTzQ5bT4Kio43TBbcngH
+51,0.513987182,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1463,1,Morning,0,15/6/2023 10:32,sk-proj-xIA8gusJr6n0EpFHkYlFz7LWbTIvaTzQ5bT4Kio43TBbcngH
 105,0.589365005,POST,noisy_value_991,200,Mozilla/5.0,636,1,Morning,1,19/2/2025 11:11,sk-proj-CS31yX6GtSvkTzaZ1SP3FGgJxRcjUdUeyfjqTL6PuhWRxmd3
 56,0.799850993,POST,noisy_value_29,200,noisy_value_211,431,1,Afternoon,1,19/2/2025 14:00,sk-proj-GN1LrZ9uMsymwPR039gVlqfLWIxTTIHE23e5SyrO2JNnEz9E
 55,0.453504611,POST,noisy_value_933,200,noisy_value_439,520,1,Night,1,19/2/2025 22:46,sk-proj-EcrRTvadU22aDSUGb6iP6tUJJqnNPIE5cZ3acVE0Y2oI8vGw
 141,0.576221034,POST,noisy_value_790,200,curl/7.64.1,2917,1,Morning,1,19/2/2025 5:17,sk-proj-q1M6Y0G54cOzTzdB0TsYTOVpG04QKccX9LrwZ8pj7NbvnFxD
-29,0.10722025,POST,/v1/chat/completions,200,curl/7.64.1,367,1,Evening,0,23/3/2024 18:08,sk-proj-ox9KMn8aOcKUFkslLXYNEBHBx1R4RDyVJlCF9GtM71DQu28A
+29,0.10722025,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",367,1,Evening,0,23/3/2024 18:08,sk-proj-ox9KMn8aOcKUFkslLXYNEBHBx1R4RDyVJlCF9GtM71DQu28A
 11,0.246510414,POST,noisy_value_650,403,PostmanRuntime/7.29.0,118,1,Morning,1,19/2/2025 10:47,sk-ant-api03-bgjpSwkwBQfu8NXGPz8c_wykbRdCc945zPDxkhoNjXaz8UXL
 85,0.805423057,POST,/v1/authenticate,403,noisy_value_755,2609,1,Afternoon,1,18/10/2025 12:44,sk-ant-api03-KZhndy1jnXnaF6RhyzbQPiMv_ws0rCITF24fdEHSMD4cNJjf
 19,0.65764733,POST,/api/user,403,Mozilla/5.0,60,1,Afternoon,1,19/2/2025 13:38,sk-proj-isTrjo0NJsCZrcIWit4wBktnYM2Dhv3BFcCMofipWl9EARPl
@@ -706,7 +706,7 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 67,0.218856493,POST,noisy_value_307,403,Mozilla/5.0,1349,1,Night,1,19/2/2025 23:43,sk-proj-4ggmKKMLwcoeXBE4tuwy8GxIDikYQ8HcHCTq7h6CCauGVceR
 94,0.583786276,POST,noisy_value_494,200,Mozilla/5.0,1113,1,Night,1,19/2/2025 22:05,sk-ant-api03-4bZY8MEzJu88KBe9scALXWGVTQnQFOdPrljqjVBnYuAOnPqN
 146,0.324908364,POST,noisy_value_769,403,Mozilla/5.0,3518,1,Evening,1,19/2/2025 17:18,sk-ant-api03-0QWEMknULoMn1ewxx_wgmWHAlBQs3Z29ZBv73szmZeRVEr7U
-93,0.631146159,POST,/v1/chat/completions,403,Mozilla/5.0,1365,1,Afternoon,0,15/11/2023 14:13,sk-proj-z1INjMJVBjY8XrM4OX5b7onoVzn23pbssHv16KtvspKLV59H
+93,0.631146159,POST,/v1/chat/completions,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1365,1,Afternoon,0,15/11/2023 14:13,sk-proj-z1INjMJVBjY8XrM4OX5b7onoVzn23pbssHv16KtvspKLV59H
 53,0.905864063,POST,/api/product,429,Mozilla/5.0,606,1,Afternoon,1,19/2/2025 16:03,sk-ant-api03-IO8oMRL2nbD3Jk2vJHb323WSWWGjy1rXGGZrQVX58F4BKckL
 80,0.961440249,POST,/signup,403,Mozilla/5.0,1443,1,Night,1,19/2/2025 22:23,sk-proj-A4o0W2ohCiPD1udRZoqHKM9L0dk5GrimjIWd8js4xpRgsEyC
 78,0.201172593,POST,noisy_value_106,403,Mozilla/5.0,1490,1,Morning,1,19/2/2025 9:55,sk-ant-api03-1G5MxdELEOyBck19sbRA0GTzot0l0m2UNUxGyY7uSTdqG1Nm
@@ -748,8 +748,8 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 102,0.750085824,POST,/v1/chat/completions,200,PostmanRuntime/7.29.0,3693,1,Night,1,26/3/2023 3:36,sk-proj-e39OoBeIgWK7ZBBpTKSCriNZ6saYw2QvDwimloInSQVsfIsy
 77,0.877907013,POST,/api/admin,403,curl/7.64.1,1265,1,Night,1,19/2/2025 23:49,sk-ant-api03-P_ds2IVX67g3i9MyEtwk5xf4UxyKVRnV6cyJZpTMCPHWN0vV
 96,0.103239652,POST,/v1/authenticate,200,Mozilla/5.0,3926,1,Evening,1,19/2/2025 20:26,sk-proj-ESsoPeH7ItxAtEbUk0zxFXkWiVZCFLdRSI41nSVpMkai303F
-39,0.768733615,POST,/v1/chat/completions,429,Python-requests/2.25.1,332,1,Afternoon,0,12/2/2025 14:00,sk-proj-ssfPjffvWYni9gkGWmEPXJV9uGU6JDfZDclXyPzet5qRUlN5
-8,0.790655196,POST,noisy_value_307,200,Mozilla/5.0,70,1,Afternoon,0,12/10/2023 12:42,sk-ant-api03-Vxj_JWHnHdfl2RK2Jcqlyx0DPM10czmYXoiOwkRrLmRr0kFF
+39,0.768733615,POST,/v1/chat/completions,429,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",332,1,Afternoon,0,12/2/2025 14:00,sk-proj-ssfPjffvWYni9gkGWmEPXJV9uGU6JDfZDclXyPzet5qRUlN5
+8,0.790655196,POST,noisy_value_307,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",70,1,Afternoon,0,12/10/2023 12:42,sk-ant-api03-Vxj_JWHnHdfl2RK2Jcqlyx0DPM10czmYXoiOwkRrLmRr0kFF
 1,0.164856924,POST,/service/status,403,Mozilla/5.0,3,1,Morning,1,19/2/2025 10:16,sk-proj-KOaM7nf8tUTtj8rTDfFoMbLOdyi5EUSllftFABdKUnAF56um
 147,0.513907899,POST,noisy_value_850,354,curl/7.64.1,3429,1,Afternoon,1,7/9/2023 14:01,sk-ant-api03-ZGAcrfJ3AIM4t31p213aUPclW3vBQJwAGk0tokcMrFWnfJTK
 4,0.826018628,POST,/api/admin,200,noisy_value_685,43,1,Morning,1,19/2/2025 11:35,sk-ant-api03-afvCRvsrZdhsNw2AtMY8lJps4zr46xnkLlXVeXTgid7p9lIb
@@ -759,14 +759,14 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 145,0.341028232,POST,noisy_value_917,404,noisy_value_132,6496,1,Evening,1,26/9/2024 17:34,sk-ant-api03-Ne6ddxPqdbPTkpTwWEyrPoKkJoG8W96mJQImalWnDhPSiED4
 73,0.300136911,POST,/v1/chat/completions,403,noisy_value_299,676,1,Night,1,10/12/2024 22:35,sk-proj-QP2C2hU3fcqoWsYpgOICtykGt6dp2YJZiNDQF1TLXSXb6UeK
 48,0.485845368,POST,/v1/authenticate,429,Mozilla/5.0,1201,1,Morning,1,19/2/2025 10:42,sk-proj-GNZNI2mADNzbgFKRCAaoZhNPUIw7ZBazqVzQNiOi9Q99oZ8W
-6,0.477272288,POST,noisy_value_694,403,curl/7.64.1,173,1,Afternoon,0,2/12/2023 16:15,sk-ant-api03-iPIDprW7ca4_VZD3CzoRr86_JCHWU7CUfDznFQ7ISsY_NrE1
+6,0.477272288,POST,noisy_value_694,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",173,1,Afternoon,0,2/12/2023 16:15,sk-ant-api03-iPIDprW7ca4_VZD3CzoRr86_JCHWU7CUfDznFQ7ISsY_NrE1
 60,0.201663063,POST,/api/product,204,noisy_value_686,440,1,Afternoon,1,19/2/2025 16:15,sk-proj-2nid8KS5Tvopcy5ab8TuNJ5EAiCKKb8QgkMaQvpZjZmZa2T3
-64,0.120725555,POST,/v1/chat/completions,200,Mozilla/5.0,242,1,Evening,0,24/6/2023 17:46,sk-proj-SZevVFsOsR932HOaDB8Dhf6AiRk4hWHTveGjuaf8DlxVVeKk
+64,0.120725555,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",242,1,Evening,0,24/6/2023 17:46,sk-proj-SZevVFsOsR932HOaDB8Dhf6AiRk4hWHTveGjuaf8DlxVVeKk
 120,0.624601574,POST,/api/user,429,PostmanRuntime/7.29.0,869,1,Night,1,19/2/2025 4:42,sk-ant-api03-yc_wvNU4WWgOUce3uU30GMFHSx0qvoDxjzy6X6xsNA5a8Vuv
 79,0.228470163,POST,noisy_value_380,255,noisy_value_336,2438,1,Morning,1,19/2/2025 11:56,sk-ant-api03-j3FXtgaqCyF9ndHsNQpYCkPLFKOwD9zoePJEPa8DaHRLCrUs
 132,0.468156094,POST,/v1/chat/completions,200,PostmanRuntime/7.29.0,1845,1,Night,1,7/6/2024 3:37,sk-ant-api03-vADcG5dpmisIOcF_3yijcezaQbQFPDYAaOizuf8Uo7OgXzuI
-12,0.570659762,POST,noisy_value_31,429,Java/1.8.0_201,223,1,Afternoon,0,5/7/2023 14:55,sk-proj-Wn8WooEmDzzc658FURLEtQz0zPf3Gr007HtUxoifqB2GNI5v
-63,0.364129071,POST,/v1/chat/completions,200,Python-requests/2.25.1,853,1,Morning,0,6/5/2024 11:28,sk-ant-api03-pcKqL43siLyep04lwrWnPNjhnS21tEXug4vGrCbGrkkKa3bA
+12,0.570659762,POST,noisy_value_31,429,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",223,1,Afternoon,0,5/7/2023 14:55,sk-proj-Wn8WooEmDzzc658FURLEtQz0zPf3Gr007HtUxoifqB2GNI5v
+63,0.364129071,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",853,1,Morning,0,6/5/2024 11:28,sk-ant-api03-pcKqL43siLyep04lwrWnPNjhnS21tEXug4vGrCbGrkkKa3bA
 84,0.976069498,POST,/metrics/usage,429,Mozilla/5.0,1600,1,Afternoon,1,19/2/2025 13:19,sk-ant-api03-jMMXnMZI2aCXxVPI5S503_E9Lk6ykM0tpq3EhdtZ0V1Dw3Nc
 67,0.983903625,POST,noisy_value_63,387,noisy_value_581,1760,1,Night,1,19/2/2025 2:47,sk-proj-LQKlrZ53ynvu1N4DLwRzFVnYSPvbm02aLAre5DWnvPGbjry5
 56,0.369068272,POST,noisy_value_887,429,Mozilla/5.0,270,1,Night,1,19/2/2025 4:20,sk-proj-cGIMdzUdN4mOKefO3cXTnsSdZVGPdcYbI2AvdX5GPxUyxQoR
@@ -783,8 +783,8 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 43,0.277686068,POST,/system/health,403,noisy_value_491,1289,1,Morning,1,19/2/2025 10:58,sk-proj-TiCuCs2ZXa6OadvNz1OeVhmOZp0ZoNVeYmR8uHuZMQWXi2UU
 130,0.582595222,POST,noisy_value_479,403,curl/7.64.1,821,1,Afternoon,1,19/2/2025 12:51,sk-ant-api03-3vAbewxAKM1tEE_mHjPAWelBuC2nqi0tqMdLcGT7cXPctsWd
 10,0.174834772,POST,/data,343,PostmanRuntime/7.29.0,222,1,Night,1,19/2/2025 3:29,sk-proj-384ftYJgiUHZm5L02n1X54PgbQpkJ8dfRDpep76FGcYi12BF
-31,0.865907581,POST,/v1/chat/completions,429,PostmanRuntime/7.29.0,849,1,Afternoon,0,27/12/2025 12:19,sk-ant-api03-dcP8qe32ajSeaBDVYxQ5n1EYmBxUcyCCFRGZCpsdSEM1URSc
-66,0.433838943,POST,/v1/chat/completions,200,noisy_value_641,466,1,Morning,0,3/10/2024 9:37,sk-proj-IB8rEvhXW9txpJOKYIHL3MGbJa6UByE32d3dEbtGSJ2IRmgj
+31,0.865907581,POST,/v1/chat/completions,429,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",849,1,Afternoon,0,27/12/2025 12:19,sk-ant-api03-dcP8qe32ajSeaBDVYxQ5n1EYmBxUcyCCFRGZCpsdSEM1URSc
+66,0.433838943,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",466,1,Morning,0,3/10/2024 9:37,sk-proj-IB8rEvhXW9txpJOKYIHL3MGbJa6UByE32d3dEbtGSJ2IRmgj
 105,0.167689121,POST,/v1/chat/completions,200,PostmanRuntime/7.29.0,1847,1,Afternoon,1,17/11/2023 12:11,sk-ant-api03-O__rK8TbYIJCieJj55dEN7cP1JUza6WHvGzVkdHBQFFYqGfa
 30,0.492535092,POST,/api/admin,403,curl/7.64.1,112,1,Morning,1,19/2/2025 9:57,sk-ant-api03-dJg3gjzQdGJOY4ZoCctdmJQnN9QPRCTFCwdBC0g3Eg5yM8nz
 43,0.126934842,POST,noisy_value_694,357,Mozilla/5.0,1336,1,Night,1,19/2/2025 22:08,sk-ant-api03-thdYG5tNRdysEzrOkJkySH1L_rcRleoQxXmOWkaTtywqYV4M
@@ -817,28 +817,28 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 116,0.261577521,POST,noisy_value_533,429,Java/1.8.0_201,1149,1,Night,1,3/2/2023 2:45,sk-ant-api03-OVXMEoVS5FfwKnr63BWZbvUVVLBUvWj_hXXjgYLZ1utL2D1g
 126,0.364187949,POST,/data,200,noisy_value_649,198,1,Morning,1,19/2/2025 6:09,sk-proj-hPmCz9cNGTrKiztvlctxRRiv8t1dMRWAlqoqDyKQuH1AoV9W
 282,0.48098,POST,noisy_value_83,404,Python-requests/2.25.1,80,1,Night,1,19/2/2025 21:44,sk-ant-api03-GrR7OhBVLjmXW7wGljl1nP4IcrJOZWRyGOt3pf9UoFzntgTT
-68,0.400309229,POST,/v1/chat/completions,403,Mozilla/5.0,594,1,Morning,0,15/6/2025 7:16,sk-ant-api03-5ctcfs6uqYAzYzrF4_7uQV6Zwuw3PyzJyEtrM4PsK4hCBlmG
+68,0.400309229,POST,/v1/chat/completions,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",594,1,Morning,0,15/6/2025 7:16,sk-ant-api03-5ctcfs6uqYAzYzrF4_7uQV6Zwuw3PyzJyEtrM4PsK4hCBlmG
 130,0.969275991,POST,noisy_value_933,429,Java/1.8.0_201,1416,1,Afternoon,1,19/2/2025 16:27,sk-proj-XngidW7shVPQiQAd529BfiK8lSqPmoozVnOZLqoxQS7awXQw
-16,0.293793059,POST,noisy_value_264,200,curl/7.64.1,61,1,Afternoon,0,5/12/2023 14:27,sk-ant-api03-2tyJP_aEzcdyw4iSnq2XsL4CzUeUDGZOv15dX4KtTpRBNdci
+16,0.293793059,POST,noisy_value_264,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",61,1,Afternoon,0,5/12/2023 14:27,sk-ant-api03-2tyJP_aEzcdyw4iSnq2XsL4CzUeUDGZOv15dX4KtTpRBNdci
 121,0.826071291,POST,/admin/settings,200,Mozilla/5.0,1599,1,Morning,1,19/2/2025 6:42,sk-ant-api03-H3jOdxH3FVUqzAwEozAJu5nted3sfmr6pLfwHzM5vBCEG73q
 112,0.188615091,POST,/v1/chat/completions,200,noisy_value_454,2950,1,Morning,1,4/11/2025 9:06,sk-ant-api03-hkbs0HOidJjOzMs9RMr39QCEHT_0H36asYIK9MnrJSJzLQXH
 72,0.386522971,POST,/v1/chat/completions,429,noisy_value_704,567,1,Night,1,19/4/2025 22:49,sk-ant-api03-SVK2Sezwdc1i8daC3nv5L80oCODNCJQsy5yHiygmUYc4hbaD
-42,0.502674362,POST,noisy_value_694,403,PostmanRuntime/7.29.0,1007,1,Afternoon,0,20/12/2023 13:39,sk-proj-2NLlTWiJAJRn4M0BqaZNr2HJMij9hSh7GM2Fz6rZsqLXP0Eq
+42,0.502674362,POST,noisy_value_694,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1007,1,Afternoon,0,20/12/2023 13:39,sk-proj-2NLlTWiJAJRn4M0BqaZNr2HJMij9hSh7GM2Fz6rZsqLXP0Eq
 68,0.486235296,POST,/data/summary,403,Mozilla/5.0,1638,1,Night,1,19/2/2025 4:15,sk-proj-HylKRdIXBWf7fV1QmSdbviCZFcVTosURI5KuLd9Q4IE5qWuE
-121,0.999067571,POST,/user/profile,429,noisy_value_611,1211,1,Afternoon,0,21/8/2024 13:45,sk-ant-api03-Nmdsh0nm4VROWmSVwAlbB7dDfLg1qGmDK3g5rcHD2TB7Naml
+121,0.999067571,POST,/user/profile,429,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1211,1,Afternoon,0,21/8/2024 13:45,sk-ant-api03-Nmdsh0nm4VROWmSVwAlbB7dDfLg1qGmDK3g5rcHD2TB7Naml
 107,0.460185913,POST,/data,429,Mozilla/5.0,1538,1,Morning,1,19/2/2025 7:28,sk-proj-cDAHeVoe7yY2A7RldnP1enSWfQUdWCEuXasiFgXi5dhBUKiK
 95,0.803758574,POST,/api/user,323,noisy_value_901,2423,1,Morning,1,19/2/2025 5:10,sk-ant-api03-IY8IwhZhA5rC1oEu2WfOQzOBGElkPhJ_JWhJA6vDOwf6fjPc
 67,0.133301053,POST,noisy_value_650,200,noisy_value_211,100,1,Evening,1,19/2/2025 20:02,sk-ant-api03-IhgsvlHuCufM4AqbpNIelLWnwpRE1R2Oc7aF5rEMKBNs8QPi
 145,0.834574802,POST,/api/user,200,Mozilla/5.0,1827,1,Night,1,19/2/2025 2:50,sk-ant-api03-HxPJjKlw7iqoNURU2hgECC3Kq56CVYw1DZWA8WTZS4SHbcUn
 370,0.728263,POST,/login,200,noisy_value_672,3334,1,Afternoon,1,19/2/2025 15:41,sk-proj-6FkErf0CDNeTjpllTE8taE1fEMaEI59CwVNghS1UjoF7QQHN
-146,0.30439142,POST,noisy_value_558,200,PostmanRuntime/7.29.0,1224,1,Evening,0,9/10/2024 20:28,sk-ant-api03-Si0kS537wGr_NwF6xwZsT65v1S1btlxdb6BJ3Y01eY2bal8a
+146,0.30439142,POST,noisy_value_558,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1224,1,Evening,0,9/10/2024 20:28,sk-ant-api03-Si0kS537wGr_NwF6xwZsT65v1S1btlxdb6BJ3Y01eY2bal8a
 44,0.128983,POST,/v1/chat/completions,429,Mozilla/5.0,1576,1,Night,1,19/2/2025 0:55,sk-proj-Po6zRdnpzS5EOcYDwXN2iKQs5DPmHKSabvpR6O4XRLL7PDRP
 38,0.734830127,POST,/api/admin,200,Mozilla/5.0,240,1,Afternoon,1,19/2/2025 16:32,sk-proj-HlqQxLXMyvTEdYRQFiljPtRLa4RzsTbpOzrFClabUxuToPck
 148,0.222374338,POST,noisy_value_620,403,noisy_value_587,2599,1,Morning,1,24/11/2024 7:21,sk-ant-api03-V7tvYDwECi3gSzvjVx_7PmW43HIshNeIMXwibi6VVdKQk9Sx
-85,0.536068135,POST,noisy_value_917,429,noisy_value_13,268,1,Afternoon,0,30/5/2024 13:48,sk-ant-api03-1CbIOnz7ii85p6zqF1FeheSIkW3x1JwVjxPJx6ka8arHQO2d
+85,0.536068135,POST,noisy_value_917,429,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",268,1,Afternoon,0,30/5/2024 13:48,sk-ant-api03-1CbIOnz7ii85p6zqF1FeheSIkW3x1JwVjxPJx6ka8arHQO2d
 71,0.497401883,POST,/api/user,200,noisy_value_91,631,1,Afternoon,1,19/2/2025 13:40,sk-proj-LcPRPKN8OtCIYr5QiqtrAm4GIefh8WhzVmPxdpjdC8OloMlu
 117,0.788356209,POST,noisy_value_662,200,Java/1.8.0_201,3256,1,Morning,1,19/2/2025 6:50,sk-proj-n6i1rGXBej8CEjzlAAq5rg9r7xBE6IIOFrJIOcj9yaDrfwVZ
-65,0.649833366,POST,noisy_value_248,477,noisy_value_380,110,1,Evening,0,22/8/2024 17:28,sk-ant-api03-56o4bVEmRJadhZEGGLLcvhd6dGBFq5AO417skST_uESm0fmt
+65,0.649833366,POST,noisy_value_248,477,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",110,1,Evening,0,22/8/2024 17:28,sk-ant-api03-56o4bVEmRJadhZEGGLLcvhd6dGBFq5AO417skST_uESm0fmt
 87,0.530696164,POST,noisy_value_110,200,Mozilla/5.0,1182,1,Morning,1,19/2/2025 5:16,sk-proj-RDTOwWrimNKdBE37RCRY6iDeji9EcwSCtZtcPkTpMkN8EIxI
 99,0.393935571,POST,/app/config,282,Mozilla/5.0,348,1,Morning,1,19/2/2025 5:59,sk-ant-api03-AIBmEb_z8nNE2gFsErtXYzjj_eGAUxOSfafaRPiHdVbecpXP
 312,0.099224,POST,/signup,500,Mozilla/5.0,2125,1,Night,1,19/2/2025 2:06,sk-ant-api03-bj633Shb9T6ZNWp6pwMRWFvXr27Am6OG8awj30w_DqALlmZ_
@@ -848,9 +848,9 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 16,0.930863174,POST,noisy_value_459,429,PostmanRuntime/7.29.0,122,1,Morning,1,19/2/2025 8:23,sk-ant-api03-rhAwPXVMMPUwOyMpC8iOg6YjgdUHl3qBpxIQ3qwxwaHcfCLC
 85,0.903281309,POST,/app/config,200,Mozilla/5.0,969,1,Evening,1,19/2/2025 20:30,sk-ant-api03-LypovACwqWPn4bIxHHX9z_8IfS8XfXg0GV4B2DqHb4sU6BSC
 84,0.708014322,POST,/api/admin,272,Mozilla/5.0,564,1,Night,1,19/2/2025 1:29,sk-proj-pBIAMP07D9tO17pGZNbFXTSZKaJ4pvA4Nzd6gL3uHIFnxxIB
-30,0.178629403,POST,noisy_value_883,200,noisy_value_346,271,1,Morning,0,22/8/2025 9:46,sk-ant-api03-Cs3MHmWj603F_Gd5lEWy1gJvMA0orMNt5ffm2z7KNJeBgswa
+30,0.178629403,POST,noisy_value_883,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",271,1,Morning,0,22/8/2025 9:46,sk-ant-api03-Cs3MHmWj603F_Gd5lEWy1gJvMA0orMNt5ffm2z7KNJeBgswa
 33,0.170996444,POST,/api/product,429,Mozilla/5.0,1117,1,Evening,1,19/2/2025 20:23,sk-ant-api03-1CmKRyuSIWJaFirC114Gd0LTCnFvwvhO8kfqlFudt29L1BjP
-23,0.141242296,POST,/v1/chat/completions,200,Python-requests/2.25.1,193,1,Evening,0,27/7/2023 20:07,sk-ant-api03-nkt5UaLcSS2VgOA4rzLarWqPtiSPk7ZcRDpq8L21kki9_tUO
+23,0.141242296,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",193,1,Evening,0,27/7/2023 20:07,sk-ant-api03-nkt5UaLcSS2VgOA4rzLarWqPtiSPk7ZcRDpq8L21kki9_tUO
 765,0.633851,POST,noisy_value_558,429,Mozilla/5.0,2119,1,Night,1,19/2/2025 1:30,sk-ant-api03-mJWxL0WHRcU0ne_xTB73khGsq0osCfbdjoVlJ1kGcZM4w36M
 113,0.993427089,POST,/api/product,272,Java/1.8.0_201,832,1,Afternoon,1,19/2/2025 16:25,sk-ant-api03-BNTytsreITA8b3NIBODYYX91TMFA9BbtPB27he2YZnmhQZze
 9,0.360520141,POST,noisy_value_974,403,Python-requests/2.25.1,35,1,Night,1,19/2/2025 22:20,sk-ant-api03-JFBkwGuJEN0moZsog6Xw4NyEcvwqeuiHzguARSmINJojpfzC
@@ -873,8 +873,8 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 97,0.512926896,POST,noisy_value_763,429,noisy_value_600,947,1,Afternoon,1,19/2/2025 12:37,sk-proj-MvjkAjS1xZj6nZVgHYGV71oedd1AKkFBYKLr0ZqoEVQKr4ve
 65,0.717966615,POST,/api/admin,226,noisy_value_336,155,1,Night,1,19/2/2025 23:50,sk-proj-G4wfAT6W0CVZTNsaQXqL5IwlJ2myLXuX6QlP5rBwhweIkpzj
 35,0.41045,POST,/v1/authenticate,500,Mozilla/5.0,192,1,Afternoon,1,19/2/2025 16:39,sk-ant-api03-uVhXUzVwBZ6B70Tu5Ez3tezAASGe3ojsvso1gCVxWS24YADc
-56,0.482829523,POST,/v1/chat/completions,200,noisy_value_182,342,1,Afternoon,0,1/3/2023 14:38,sk-ant-api03-f1Cw54uK148wJ3O6xw40L5rlD6pWdTsjRYjbCDEfMAYsTU7G
-97,0.852618171,POST,noisy_value_293,403,Mozilla/5.0,629,1,Afternoon,0,1/6/2023 12:31,sk-ant-api03-Z7Dr6ebspwTk0uoKYWx6I1YmtqOMuYJ7Uqss2QgK93r34EJx
+56,0.482829523,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",342,1,Afternoon,0,1/3/2023 14:38,sk-ant-api03-f1Cw54uK148wJ3O6xw40L5rlD6pWdTsjRYjbCDEfMAYsTU7G
+97,0.852618171,POST,noisy_value_293,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",629,1,Afternoon,0,1/6/2023 12:31,sk-ant-api03-Z7Dr6ebspwTk0uoKYWx6I1YmtqOMuYJ7Uqss2QgK93r34EJx
 125,0.602938,POST,/v1/authenticate,403,noisy_value_616,104,1,Morning,1,19/2/2025 7:31,sk-proj-RyYCw5V50oKe1ea016U481IAiDi9MMoNz0PRePf2BSHjM7al
 1,0.275847221,POST,/data/summary,200,Java/1.8.0_201,16,1,Night,1,19/2/2025 2:59,sk-ant-api03-frlm0Dp8No88U8XOjXJ8ADv2P4N_SAjApm_NqPKf9lrSh7Ex
 46,0.671126453,POST,/data,405,PostmanRuntime/7.29.0,336,1,Night,1,19/2/2025 21:34,sk-proj-iK0Sch8P8gH3BG4yjC0nxpkQCBVkyq3m0FpzoXSP1F539DlQ
@@ -891,21 +891,21 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 89,0.381145691,POST,/metrics/usage,488,Mozilla/5.0,1423,1,Morning,1,19/2/2025 6:01,sk-proj-XRxpD3N5nSuZTBECTz72qNkATIKoTc5lRkSkU1FaTlwWD6VH
 67,0.123915654,POST,/v1/chat/completions,403,PostmanRuntime/7.29.0,2133,1,Evening,1,16/3/2023 18:36,sk-proj-fRWHxU9CsooI1gj1LlrIvAmcneQBxCV9sBmrk7QdTKeZAXjO
 33,0.553095113,POST,noisy_value_345,434,PostmanRuntime/7.29.0,381,1,Evening,1,19/2/2025 20:55,sk-ant-api03-t_wzxOO_n6fLBpHPzyTs8tzSPfJx8kCymlCR8DeS5f7IJpKQ
-96,0.826923026,POST,noisy_value_763,429,Java/1.8.0_201,129,1,Afternoon,0,2/7/2023 16:16,sk-proj-51X2Ep4ho84HJ9L71wsyUojn2kzgMcsLWJTNAtKuWvhk9zzD
+96,0.826923026,POST,noisy_value_763,429,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",129,1,Afternoon,0,2/7/2023 16:16,sk-proj-51X2Ep4ho84HJ9L71wsyUojn2kzgMcsLWJTNAtKuWvhk9zzD
 107,0.913057571,POST,/api/product,429,noisy_value_649,361,1,Afternoon,1,19/2/2025 14:10,sk-proj-MTU27TPET8GZ9Opy35FuEWl8AqQU4IiDaaLJMrOST68cBGDR
 99,0.277630589,POST,/data/summary,200,Mozilla/5.0,1860,1,Afternoon,1,19/2/2025 13:43,sk-proj-QsAf05Ynr8FBllNaurFYbEQ7UJDUb0StUFGWN8OD2J2nR7Ay
-65,0.374987997,POST,/v1/chat/completions,390,noisy_value_135,343,1,Evening,0,15/8/2025 20:56,sk-ant-api03-D1TEJK1EQTep8MDKaQcLg7yIyLb90qe1FjyIEu9okKJqwL1f
+65,0.374987997,POST,/v1/chat/completions,390,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",343,1,Evening,0,15/8/2025 20:56,sk-ant-api03-D1TEJK1EQTep8MDKaQcLg7yIyLb90qe1FjyIEu9okKJqwL1f
 125,0.226024119,POST,/v1/authenticate,200,Mozilla/5.0,1400,1,Night,1,19/2/2025 0:53,sk-ant-api03-bMw_0r2BxnD7OWX0LI9GxuJxwVbBDQQCOeLii0c3DA03eijl
 89,0.793947588,POST,/service/status,200,Mozilla/5.0,1156,1,Afternoon,1,19/2/2025 13:44,sk-ant-api03-xjAQUCu_RxuBWXjdQcv2ju9XtkPEqf0n2ZCpMyTjzjH7RWng
 143,0.138792012,POST,/api/product,403,noisy_value_496,194,1,Night,1,19/2/2025 0:23,sk-proj-mDc25w7dhGVYsQnO1OYEa6YdV2WJlXxxdY97WAhEnNav1Wnl
 24,0.517751941,POST,/api/admin,403,noisy_value_512,113,1,Afternoon,1,19/2/2025 13:36,sk-proj-d4D08Varj6dUkmGRhfN8Ncni7GQrYGCUMSrk8DJ3ZKlaqpK5
-141,0.755843416,POST,/v1/chat/completions,403,curl/7.64.1,1153,1,Morning,0,10/11/2024 10:19,sk-proj-fIDgU3jCmuIUqKnRlrKToJ6bWeMrt4TY1cCmFvhqsb3mZWa7
+141,0.755843416,POST,/v1/chat/completions,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1153,1,Morning,0,10/11/2024 10:19,sk-proj-fIDgU3jCmuIUqKnRlrKToJ6bWeMrt4TY1cCmFvhqsb3mZWa7
 63,0.417728,POST,/v1/authenticate,404,Mozilla/5.0,1749,1,Night,1,19/2/2025 2:05,sk-proj-ABwzYR0hwv7aOEr2u0RlmkJJlpNQeVD4zLJEkgbZHLUqdH2m
 44,0.943116332,POST,noisy_value_974,429,Python-requests/2.25.1,549,1,Night,1,19/2/2025 3:33,sk-proj-1qAtMoXN74VRDiuAOW9RQxFMBn4Jpew9YD0SOeSeBZVtR3vV
 27,0.958000885,POST,/api/user,403,Mozilla/5.0,657,1,Morning,1,19/2/2025 11:29,sk-ant-api03-erMfXgkxi26hZDvpX04idU55sHpRgcXdjkIwx6sd3M2gcRf3
 141,0.671602022,POST,/data,379,noisy_value_581,3792,1,Afternoon,1,19/2/2025 12:06,sk-ant-api03-InsniDE2VjDpX2Ooa_vESMnpkNoMTmv2PUmp554wdlIu7gFP
 88,0.958108793,POST,/api/admin,200,PostmanRuntime/7.29.0,761,1,Morning,1,19/2/2025 10:39,sk-proj-sCijgjXNVlGrXQM4iwZWebt1DWSeTuA8vQa5GoDHw21WigIm
-122,0.847690309,POST,noisy_value_629,200,noisy_value_685,331,1,Morning,0,24/5/2025 6:11,sk-proj-KyYVC29svdgFmSNEr42HUylWGzxJVfXweX0wmWwpWV8yhYnj
+122,0.847690309,POST,noisy_value_629,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",331,1,Morning,0,24/5/2025 6:11,sk-proj-KyYVC29svdgFmSNEr42HUylWGzxJVfXweX0wmWwpWV8yhYnj
 11,0.369321634,POST,noisy_value_903,403,Mozilla/5.0,104,1,Morning,1,19/2/2025 6:56,sk-ant-api03-r8mx0EYeVtKruy52xsGaojFgO6l__eRAYblxeOca8d23CoK3
 85,0.312043087,POST,noisy_value_678,319,Mozilla/5.0,2504,1,Night,1,19/2/2025 21:43,sk-ant-api03-diZdetFNkQRIFeuswax9QZjsr4PlryAiA45PWVmkrWOYeGAA
 148,0.119075465,POST,noisy_value_386,403,noisy_value_496,2682,1,Evening,1,19/2/2025 19:57,sk-ant-api03-fNKhoj40WK6V6eYP1ZC1VUL10AM1KRUcVNP69ajt7gZBdIp8
@@ -914,7 +914,7 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 114,0.414104103,POST,/notifications/list,390,Mozilla/5.0,2143,1,Afternoon,1,19/2/2025 13:45,sk-ant-api03-fWk7pH1CA4EQcIgDzNhZFAP2csTzzHpWfeAcRlmHK37zgYzZ
 48,0.46290488,POST,/v1/chat/completions,200,PostmanRuntime/7.29.0,1683,1,Night,1,11/12/2024 21:33,sk-proj-8ORQujiADrrEvsyZ2boqA1aQY2hmaBytZ8jpE2aCZAp4244D
 62,0.210024304,POST,noisy_value_932,403,Mozilla/5.0,738,1,Afternoon,1,19/2/2025 15:47,sk-proj-DI6FrflgnBActLQmN19kVj1oyeR7qbsOphIIM2dvGOc1Fw7f
-99,0.184732418,POST,/v1/chat/completions,200,noisy_value_82,1416,1,Afternoon,0,18/11/2024 12:30,sk-ant-api03-IB5Byx7g0RXF9P1LOX7idud3WOfFTLZPFbk6DEw8Ng96iKuV
+99,0.184732418,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1416,1,Afternoon,0,18/11/2024 12:30,sk-ant-api03-IB5Byx7g0RXF9P1LOX7idud3WOfFTLZPFbk6DEw8Ng96iKuV
 121,0.424478371,POST,/notifications/list,200,Mozilla/5.0,1904,1,Morning,1,19/2/2025 8:02,sk-ant-api03-1p8oLe3b7NUXYj4t1nIKSbaGcSsxVZuhGTl5KuvyGxPpwg3x
 14,0.675804214,POST,/app/config,200,Mozilla/5.0,272,1,Morning,1,19/2/2025 6:05,sk-proj-EfpgBCNhiJDknUCBusho2qifyJbSvvnNTeAFrNl2l6aiSPSf
 28,0.797108315,POST,noisy_value_533,200,Python-requests/2.25.1,43,1,Evening,1,19/2/2025 19:57,sk-ant-api03-9eh5K60pj0dmhXikbFobVWZHrNC5qHDewCjniG0eddZd7OkC
@@ -924,11 +924,11 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 148,0.917156864,POST,noisy_value_533,200,noisy_value_317,3162,1,Night,1,1/9/2024 23:14,sk-proj-t0M84PetSuW0UoXFcvsYiDT0M58oXiaQVEhHrQ0xR12F8k79
 46,0.871909744,POST,/api/product,200,noisy_value_102,733,1,Night,1,19/2/2025 23:28,sk-ant-api03-cAsaLZl6WE6qcQ71CuNIPk_I6EzBT28haMf1ZNbU1SQkFiuA
 249,0.700798,POST,/data/summary,429,Mozilla/5.0,825,1,Afternoon,1,19/2/2025 13:44,sk-proj-2Du5iHMlJDwg2kPJJQ9sLG4RZQsQiaq6bcjBkfV9SJUYxX4I
-56,0.179942449,POST,/v1/chat/completions,403,Mozilla/5.0,134,1,Afternoon,0,6/8/2024 13:03,sk-proj-fYALyY70uin1NpnR0PdZNPkOSzaMOsMNDItF60stMSCinsZ3
+56,0.179942449,POST,/v1/chat/completions,403,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",134,1,Afternoon,0,6/8/2024 13:03,sk-proj-fYALyY70uin1NpnR0PdZNPkOSzaMOsMNDItF60stMSCinsZ3
 144,0.58085237,POST,noisy_value_275,200,noisy_value_299,5440,1,Night,1,21/7/2023 3:41,sk-ant-api03-zw4Y9cBovGTeSEX3qcuv3sQ1OJ9dDkzVD9vmvvnEt4ds42YH
 119,0.109815477,POST,/api/product,200,noisy_value_91,2192,1,Night,1,19/2/2025 0:56,sk-proj-MuR9iWDDUlD4WbwcQZ6nX7IAEkwnt8F7mvIyImS8I45Oe2XT
 66,0.725226093,POST,noisy_value_63,403,noisy_value_825,757,1,Night,1,8/12/2024 22:55,sk-ant-api03-chjQ7iVhvZm_kW9s7SYTllmdbCSQc3qCcC3Hek8j3fWC29BC
-109,0.131023255,POST,/v1/chat/completions,200,Mozilla/5.0,458,1,Evening,0,7/7/2023 20:36,sk-ant-api03-qxeBD6Pblw2Qiq7rOr0osAkMK6PkzHBr1Lpr4Gm_GEXmUQlm
+109,0.131023255,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",458,1,Evening,0,7/7/2023 20:36,sk-ant-api03-qxeBD6Pblw2Qiq7rOr0osAkMK6PkzHBr1Lpr4Gm_GEXmUQlm
 107,0.144754897,POST,/v1/chat/completions,429,Java/1.8.0_201,157,1,Night,1,12/5/2024 22:55,sk-ant-api03-wUQRA45s9mYo8ekiPx1GTMUpJLRwXPHnRyUTWAFEDCxIep0a
 90,0.842102082,POST,/system/health,200,noisy_value_496,848,1,Night,1,19/2/2025 0:38,sk-ant-api03-I1TwRWW4mNZm1o6lLmVtPIcPnVCG4L7y4LfzTeXutbKKEoaJ
 140,0.448478542,POST,/user/profile,429,Mozilla/5.0,1895,1,Morning,1,19/2/2025 11:01,sk-proj-jf3nrpvqvmc6A71YkCwJ1lgomtiiJIZne28clGa3gN6unmU9
@@ -939,9 +939,9 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 286,0.592826,POST,noisy_value_933,429,Mozilla/5.0,2187,1,Night,1,19/2/2025 0:30,sk-proj-2da7f4BMGts6Jkq8b9Qzv33PAoeNmKInDIojDsRlcEIw1c8J
 150,0.6004556,POST,/api/product,429,Mozilla/5.0,2917,1,Evening,1,19/2/2025 17:37,sk-ant-api03-M0jRuUVyJsUv5NSWTSNN6KHAipOGKso0yebpAEsYH405gbym
 74,0.506210115,POST,noisy_value_462,200,Mozilla/5.0,1417,1,Night,1,19/2/2025 1:33,sk-proj-iqmvUxnALUKXHP7F7wYykmEnYEXsJNnjUiO75b8up02OD3mE
-126,0.873351192,POST,/v1/chat/completions,319,curl/7.64.1,965,1,Evening,0,12/10/2024 19:17,sk-proj-YfUYwUnXClEZCQadGmU0cwajR4tn4TditW9lYhYAH7rBR4lw
+126,0.873351192,POST,/v1/chat/completions,319,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",965,1,Evening,0,12/10/2024 19:17,sk-proj-YfUYwUnXClEZCQadGmU0cwajR4tn4TditW9lYhYAH7rBR4lw
 48,0.426329834,POST,/v1/chat/completions,354,Mozilla/5.0,1556,1,Night,1,30/10/2023 22:39,sk-ant-api03-rPYJiu39IcjDBuWJI_TEyAv3yzXkV9wjrTiL0kYUtENAgwwK
-38,0.843281332,POST,noisy_value_659,200,noisy_value_701,872,1,Afternoon,0,18/10/2024 14:24,sk-ant-api03-7yPUlUdf_z4X9u_rvJh5J0evRCufVQGUHA5Zdj3Ex4IpTcx2
+38,0.843281332,POST,noisy_value_659,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",872,1,Afternoon,0,18/10/2024 14:24,sk-ant-api03-7yPUlUdf_z4X9u_rvJh5J0evRCufVQGUHA5Zdj3Ex4IpTcx2
 132,0.468669915,POST,/metrics/usage,403,Mozilla/5.0,3444,1,Morning,1,19/2/2025 8:25,sk-ant-api03-gjJjg0xgu6xuehVWb7qX451FZxSqqVoiXBQ9ZIjYLMIg2nud
 266,0.435483,POST,/data/summary,429,Mozilla/5.0,2259,1,Night,1,19/2/2025 1:52,sk-ant-api03-mwaZqDCO9ga0V56KNuVN5tCKRkn7iLDDiWqoh6tAzjz6MeJS
 114,0.339793001,POST,/api/admin,434,noisy_value_704,1252,1,Morning,1,19/2/2025 8:01,sk-ant-api03-x0v4U6velAJLLjydphuPSFeSJqDSxn7SvMawmjeQotVcsRuo
@@ -953,8 +953,8 @@ Rate Limiting,Endpoint Entropy,HTTP Method,API Endpoint,HTTP Status,User-Agent,T
 95,0.803258789,POST,noisy_value_459,403,Java/1.8.0_201,1015,1,Night,1,29/3/2023 0:30,sk-ant-api03-eUHJgB_0lCAdEwFaopP1AZ6R5Ai6m1xywkGUM8w1o3N1KIhm
 69,0.921146558,POST,/v1/authenticate,403,noisy_value_931,2652,1,Afternoon,1,19/2/2025 15:05,sk-proj-3u63AaFRbCa8KckZpbe29exeiBi03O2mihZ1XTli36pbZBxd
 129,0.961292917,POST,/admin/settings,200,noisy_value_464,2332,1,Morning,1,19/2/2025 10:38,sk-ant-api03-KVioG5zXbC5TFwqrz_MOioZ3HCWgNZ3KPDi9Tn7bBonJEL2b
-91,0.395017033,POST,/v1/chat/completions,200,Mozilla/5.0,1694,1,Morning,0,6/11/2023 11:24,sk-proj-1IteS7ZJmgjf8vz9Y4E4ZK77B71zUCNklzGoKSnepoywE8Eb
-52,0.532119029,POST,/v1/chat/completions,353,PostmanRuntime/7.29.0,726,1,Morning,0,10/8/2024 9:13,sk-proj-IBfnesz4jQ3O6ZNjFskHROOgLzkkd0ONb2vv61YYmnnnf7az
+91,0.395017033,POST,/v1/chat/completions,200,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",1694,1,Morning,0,6/11/2023 11:24,sk-proj-1IteS7ZJmgjf8vz9Y4E4ZK77B71zUCNklzGoKSnepoywE8Eb
+52,0.532119029,POST,/v1/chat/completions,353,"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",726,1,Morning,0,10/8/2024 9:13,sk-proj-IBfnesz4jQ3O6ZNjFskHROOgLzkkd0ONb2vv61YYmnnnf7az
 104,0.78465957,POST,/api/v2/data,200,noisy_value_931,602,1,Morning,1,19/2/2025 11:35,sk-proj-JoSChV6UDsPuZl5nK6pYAEOi9eDTM7TZCTH2QhzscLe9Y24N
 37,0.5786062,POST,/api/v2/data,299,Mozilla/5.0,335,1,Night,1,19/2/2025 1:37,sk-ant-api03-nJUptyO6Lneq6mq6OFu8pne7qhCNzEaT1k_s3ajXkgzPNSTO
 150,0.763200686,POST,/v1/authenticate,403,Mozilla/5.0,3944,1,Night,1,19/2/2025 1:11,sk-proj-Pc9uvqKkNSDkK2A6SB9BKIZm8aS8Ko1jqpaVhdc2j2cBQgW4

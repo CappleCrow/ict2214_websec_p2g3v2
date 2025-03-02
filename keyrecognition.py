@@ -59,7 +59,7 @@ data = extract_features(data)
 # Features and Labels
 X = data[['length', 'starts_with_sk_proj', 'starts_with_ant',
           'digit_ratio', 'uppercase_ratio', 'non_alphanumeric_count',
-          'matches_openai_format', 'matches_anthropic_format', 'matches_cohere_format','matches_poe_format','matches_poe_format']]
+          'matches_openai_format', 'matches_anthropic_format', 'matches_cohere_format','matches_poe_format']]
 y = data['label']
 
 # Split the dataset into training and testing sets (80% train, 20% test)
@@ -75,7 +75,7 @@ print("Accuracy:", accuracy_score(y_test, y_pred))
 
 
 # Save the model (optional, for deployment)
-joblib.dump(clf, 'random_forest_api_key_model.pkl')
+joblib.dump(clf, 'random_forest_api_key_model_v1.5.0.pkl')
 
 # Function to test individual API keys
 def test_api_key(key, model):
