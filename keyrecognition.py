@@ -46,6 +46,10 @@ def extract_features(df):
     df['matches_cohere_format'] = df['key'].apply(
         lambda x: bool(re.match(r'^[A-Za-z0-9]{40}$', x))
     ).astype(int)
+
+    df['matches_poe_format'] = df['key'].apply(
+        lambda x: bool(re.match(r'^[A-Za-z0-9_]{43}$', x))
+    ).astype(int)
     
     return df
 
@@ -55,7 +59,7 @@ data = extract_features(data)
 # Features and Labels
 X = data[['length', 'starts_with_sk_proj', 'starts_with_ant',
           'digit_ratio', 'uppercase_ratio', 'non_alphanumeric_count',
-          'matches_openai_format', 'matches_anthropic_format', 'matches_cohere_format']]
+          'matches_openai_format', 'matches_anthropic_format', 'matches_cohere_format','matches_poe_format','matches_poe_format']]
 y = data['label']
 
 # Split the dataset into training and testing sets (80% train, 20% test)
@@ -85,7 +89,8 @@ def test_api_key(key, model):
         'non_alphanumeric_count': sum(not c.isalnum() and c not in "-_" for c in key),
         'matches_openai_format': int(bool(re.match(r'^sk-proj-([A-Za-z0-9]{10,20}-){4}[A-Za-z0-9]{10,20}$', key))),
         'matches_anthropic_format': int(bool(re.match(r'^sk-ant-api03-[A-Za-z0-9_-]{95}$', key))),
-        'matches_cohere_format': int(bool(re.match(r'^[A-Za-z0-9]{40}$', key)))
+        'matches_cohere_format': int(bool(re.match(r'^[A-Za-z0-9]{40}$', key))),
+        'matches_poe_format': int(bool(re.match(r'^[A-Za-z0-9_]{43}$', key)))
     }
     
     # Convert to DataFrame for prediction
@@ -102,6 +107,8 @@ example_keys = [
     # Insert Valid Anthropic key here,
     # Insert Valid Cohere key here,
     # Insert an Invalid Anthropic key example,
+    # Insert a valid poe key here,
+    # insert a invalid poe key
 ]
 
 print("\nTesting Individual Keys:")
