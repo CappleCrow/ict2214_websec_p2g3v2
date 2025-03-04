@@ -260,7 +260,7 @@ def home():
                     "User-Agent": request.headers.get("User-Agent", "Unknown"),
                     "Token Used": total_tokens,
                     "Method_POST": 1 if request.method.upper() == "POST" else 0,
-                    "Time of Day": "Morning"
+                    "Time of Day": time_of_day
                 }
                 # Log the API request
                 log_api_request(api_key, request_metadata)
