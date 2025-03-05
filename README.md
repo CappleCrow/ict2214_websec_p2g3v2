@@ -2,8 +2,8 @@
 
 ## How to run
 
-Step 1: Run the load.py file to start the server
-> load.py will also generate a PDF report that shows cases of potential misuse
+Step 1: Run the user.py file to start the server
 
-Step 2: Run the sendrequest.py on another terminal to simulate a sent request
-> sendrequest.py only returns something if the request is classified as not malicious
+Use Case 1: At night time API request will be rejected
+Use Case 2: If token exceed 3000 the request will be rejected
+Use Case 3: If User agent is different it will be rejecetd
