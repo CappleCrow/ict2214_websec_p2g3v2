@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, session, jsonify
 import os
 import requests
+from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from reportlab.lib.utils import simpleSplit
 import anthropic  # Import the Anthropic package
 import cohere     # Import the Cohere package
 import asyncio
@@ -202,6 +204,44 @@ def prepare_poe_messages(messages):
         mapped_messages.append({"role": role, "content": msg.get("content", "")})
     return mapped_messages
 
+# -------------------- Helper function for generating PDF --------------------
+def get_downloads_folder():
+    """Get the default Downloads folder path for the current user."""
+    home = Path.home()
+    return home / "Downloads"
+
+def generate_pdf_report(api_key, request_metadata, file_name="suspicious_activity_report.pdf"):
+    """Generate a PDF report for suspicious activity detected in API request."""
+    downloads_folder = get_downloads_folder()
+    report_file_path = downloads_folder / file_name  # Save in Downloads folder
+
+    c = canvas.Canvas(str(report_file_path), pagesize=letter)
+    width, height = letter
+
+    # Title
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(100, height - 50, "Suspicious Activity Report")
+
+    # Add details of the suspicious activity
+    c.setFont("Helvetica", 12)
+    c.drawString(100, height - 80, f"API Key: {api_key[:8]}*****")  # Masking API Key for security
+    c.drawString(100, height - 100, f"Time of Request: {datetime.datetime.now().strftime('%d/%m/%Y %H:%M')}")
+    c.drawString(100, height - 120, f"Rate Limiting: {request_metadata['Rate Limiting']}")
+    c.drawString(100, height - 140, f"HTTP Method: {request_metadata['HTTP Method']}")
+    c.drawString(100, height - 160, f"API Endpoint: {request_metadata['API Endpoint']}")
+    c.drawString(100, height - 180, f"User-Agent: {request_metadata['User-Agent']}")
+    c.drawString(100, height - 200, f"Time of Day: {request_metadata['Time of Day']}")
+
+    # Add a warning message
+    c.setFont("Helvetica-Bold", 14)
+    c.setFillColorRGB(1, 0, 0)  # Red color for warning
+    c.drawString(100, height - 240, "⚠️ Suspicious activity detected. This request was blocked.")
+
+    # Finalize the PDF
+    c.save()
+    
+    return report_file_path
+
 # -------------------- Routes for HTML-based Interface --------------------
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -268,7 +308,10 @@ def home():
                 predicted_class = xgb_model.predict(processed_data)[0]
                 if predicted_class == 1:
                     error_message = "🚨 Suspicious activity detected. Request blocked."
-                    return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[])
+                    # Generate the PDF report for suspicious activity
+                    report_file_path = generate_pdf_report(api_key, request_metadata)
+                    print(f"PDF Report generated at: {report_file_path}")
+                    return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[], pdf_report_path=report_file_path)
                 payload = {"model": "gpt-4o-mini", "messages": session["conversation"], "temperature": 0.7, "max_tokens": 100}
                 headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
                 response = requests.post(OPENAI_API_URL, json=payload, headers=headers)
