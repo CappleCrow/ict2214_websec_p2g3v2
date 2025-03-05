@@ -413,27 +413,65 @@ def home():
         session["conversation"] = []
     response_text = ""
     error_message = ""
+    
     if request.method == "POST" and "clear_chat" not in request.form:
         api_key = request.form.get("api_key")
         user_message = request.form.get("user_message")
         provider = request.form.get("provider", "openai")
+        
+        # Validate if API Key and Message are provided
         if not api_key or not user_message:
             error_message = "API Key and Message are required!"
             return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[])
+        
         session["conversation"].append({"role": "user", "content": user_message})
         session.modified = True
+        
         # Validate API Key using the model-based function
         prediction = test_api_key(api_key, rf_model)
         if prediction not in ["Valid OpenAI", "Valid Cohere", "Valid Anthropic", "Valid Poe"]:
             error_message = "Invalid API Key"
             return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[])
+
+        # Set the selected endpoint before checking for anomalies
         endpoint_mapping = {
             "openai": "/v1/chat/completions",
             "poe": "/api/message",
-            "cohere": "/v1/generate"
+            "cohere ai": "/v1/generate"
         }
         selected_endpoint = endpoint_mapping.get(provider.lower(), "/v1/chat/completions")
-        if provider.lower() == "cohere":
+
+        # Check for anomaly before proceeding to make the API request
+        total_tokens = calculate_tokens(session["conversation"])
+        time_of_day = categorize_time_of_day()
+        request_metadata = {
+            "Rate Limiting": int(request.headers.get("x-ratelimit-remaining-requests", 100)),
+            "Endpoint Entropy": 0.5,
+            "HTTP Method": request.method,
+            "API Endpoint": selected_endpoint,  # Now we have the selected endpoint here
+            "HTTP Status": 200,
+            "User-Agent": request.headers.get("User-Agent", "Unknown"),
+            "Token Used": total_tokens,
+            "Method_POST": 1 if request.method.upper() == "POST" else 0,
+            "Time of Day": "Morning"
+        }
+
+        # Log the API request
+        log_api_request(api_key, request_metadata)
+        
+        # Preprocess the input and check for anomalies
+        processed_data = preprocess_input(request_metadata)
+        predicted_class = xgb_model.predict(processed_data)[0]
+        
+        if predicted_class == 1:  # Anomaly detected
+            error_message = "🚨 Suspicious activity detected. Request blocked."
+            # Generate the PDF report for suspicious activity
+            report_file_path = generate_pdf_report(api_key, request_metadata)
+            print(f"PDF Report generated at: {report_file_path}")
+            return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[], pdf_report_path=report_file_path)
+        
+        # Proceed to API calls if no anomaly detected
+        if provider.lower() == "cohere ai":
             try:
                 response_text = call_cohere_api(api_key, session["conversation"])
             except Exception as e:
@@ -453,29 +491,6 @@ def home():
                 error_message = f"POE API request failed: {str(e)}"
         else:
             try:
-                total_tokens = calculate_tokens(session["conversation"])
-                time_of_day = categorize_time_of_day()
-                request_metadata = {
-                    "Rate Limiting": int(request.headers.get("x-ratelimit-remaining-requests", 100)),
-                    "Endpoint Entropy": 0.5,
-                    "HTTP Method": request.method,
-                    "API Endpoint": selected_endpoint,
-                    "HTTP Status": 200,
-                    "User-Agent": request.headers.get("User-Agent", "Unknown"),
-                    "Token Used": total_tokens,
-                    "Method_POST": 1 if request.method.upper() == "POST" else 0,
-                    "Time of Day": "Morning"
-                }
-                # Log the API request
-                log_api_request(api_key, request_metadata)
-                processed_data = preprocess_input(request_metadata)
-                predicted_class = xgb_model.predict(processed_data)[0]
-                if predicted_class == 1:
-                    error_message = "🚨 Suspicious activity detected. Request blocked."
-                    # Generate the PDF report for suspicious activity
-                    report_file_path = generate_pdf_report(api_key, request_metadata)
-                    print(f"PDF Report generated at: {report_file_path}")
-                    return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[], pdf_report_path=report_file_path)
                 payload = {"model": "gpt-4o-mini", "messages": session["conversation"], "temperature": 0.7, "max_tokens": 100}
                 headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
                 response = requests.post(OPENAI_API_URL, json=payload, headers=headers)
@@ -486,9 +501,12 @@ def home():
                     response_text = response_data["choices"][0]["message"]["content"].strip()
             except requests.exceptions.RequestException as e:
                 error_message = f"API request failed: {str(e)}"
+        
         session["conversation"].append({"role": "assistant", "content": response_text})
         session.modified = True
+        
     return render_template("validate_api_request.html", response_text=response_text, error_message=error_message, conversation=session["conversation"])
+
 
 @app.route("/clear", methods=["POST"])
 def clear_chat():
