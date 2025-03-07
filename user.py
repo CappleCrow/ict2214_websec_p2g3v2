@@ -433,12 +433,12 @@ def home():
             "Rate Limiting": int(request.headers.get("x-ratelimit-remaining-requests", 100)),
             "Endpoint Entropy": 0.5,
             "HTTP Method": request.method,
-            "API Endpoint": selected_endpoint,  # Now we have the selected endpoint here
+            "API Endpoint": "/v1/chat/completions",
             "HTTP Status": 200,
             "User-Agent": request.headers.get("User-Agent", "Unknown"),
             "Token Used": total_tokens,
             "Method_POST": 1 if request.method.upper() == "POST" else 0,
-            "Time of Day": time_of_day
+            "Time of Day": "Morning"
         }
 
         # Log the API request
