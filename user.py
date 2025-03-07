@@ -225,66 +225,63 @@ def generate_pdf_report(api_key, request_metadata, file_name="suspicious_activit
     downloads_folder = get_downloads_folder()
     report_file_path = downloads_folder / file_name
 
+    # Check if the report file already exists and update the file name accordingly
+    if report_file_path.exists():
+        base = file_name.rsplit('.', 1)[0]  # 'suspicious_activity_report'
+        ext = file_name.rsplit('.', 1)[1] if '.' in file_name else ""
+        counter = 1
+        new_file_name = f"{base}({counter}).{ext}" if ext else f"{base}({counter})"
+        report_file_path = downloads_folder / new_file_name
+        while report_file_path.exists():
+            counter += 1
+            new_file_name = f"{base}({counter}).{ext}" if ext else f"{base}({counter})"
+            report_file_path = downloads_folder / new_file_name
+
     # Create canvas with letter size
     c = canvas.Canvas(str(report_file_path), pagesize=letter)
     width, height = letter
     
-    # Set up colors for the report
-    primary_color = colors.HexColor('#FF0000')  # Red for warnings
-    secondary_color = colors.HexColor('#0066CC')  # Blue for headers
-    text_color = colors.HexColor('#333333')  # Dark gray for text
-    
     # -------- Header Section --------
-    # Add header background (light gray)
     c.setFillColorRGB(0.95, 0.95, 0.95)
     c.rect(0, height - 2*inch, width, 2*inch, fill=True, stroke=False)
     
-    # Add title text directly - without any background rectangles covering it
-    c.setFillColor(primary_color)
+    c.setFillColor(colors.HexColor('#FF0000'))
     c.setFont("Helvetica-Bold", 24)
     c.drawString(1*inch, height - 1*inch, "   SECURITY ALERT")
     
-    # Draw warning icon before the text, not overlapping
     c.setFont("Helvetica-Bold", 30)
     c.drawString(0.5*inch, height - 1*inch, "⚠️")
     
-    # Add timestamp
-    c.setFillColor(text_color)
+    c.setFillColor(colors.HexColor('#333333'))
     c.setFont("Helvetica", 10)
     current_time = datetime.datetime.now().strftime("%B %d, %Y %H:%M:%S")
     c.drawString(width - 3*inch, height - 0.6*inch, f"Generated: {current_time}")
     
-    # Add report subtitle
-    c.setFillColor(secondary_color)
+    c.setFillColor(colors.HexColor('#0066CC'))
     c.setFont("Helvetica-Bold", 14)
     c.drawString(1*inch, height - 1.4*inch, "Suspicious API Request Activity Report")
     
-    # Add horizontal line
-    c.setStrokeColor(secondary_color)
+    c.setStrokeColor(colors.HexColor('#0066CC'))
     c.setLineWidth(2)
     c.line(0.5*inch, height - 1.8*inch, width - 0.5*inch, height - 1.8*inch)
     
     # -------- Request Information Section --------
-    # Section title
     y_position = height - 2.5*inch
-    c.setFillColor(secondary_color)
+    c.setFillColor(colors.HexColor('#0066CC'))
     c.setFont("Helvetica-Bold", 16)
     c.drawString(0.5*inch, y_position, "Request Information")
     y_position -= 0.4*inch
     
-    # Add masked API key with different formatting
-    c.setFillColor(primary_color)
+    c.setFillColor(colors.HexColor('#FF0000'))
     c.setFont("Courier-Bold", 12)
     masked_key = f"{api_key[:8]}{'*' * 15}"
     c.drawString(0.5*inch, y_position, f"API Key: {masked_key}")
     y_position -= 0.4*inch
     
-    # Create two-column layout for request details
     left_column_x = 0.5*inch
     right_column_x = 4*inch
     
-    # First column details
-    c.setFillColor(text_color)
+    c.setFillColor(colors.HexColor('#333333'))
     c.setFont("Helvetica-Bold", 11)
     c.drawString(left_column_x, y_position, "Timestamp:")
     c.setFont("Helvetica", 11)
@@ -304,9 +301,7 @@ def generate_pdf_report(api_key, request_metadata, file_name="suspicious_activit
     c.drawString(left_column_x + 1*inch, y_position, endpoint_text)
     y_position -= 0.3*inch
     
-    # Second column details
-    y_position = height - 3.3*inch  # Reset y position for second column
-    
+    y_position = height - 3.3*inch
     c.setFont("Helvetica-Bold", 11)
     c.drawString(right_column_x, y_position, "Rate Limiting:")
     c.setFont("Helvetica", 11)
@@ -321,21 +316,18 @@ def generate_pdf_report(api_key, request_metadata, file_name="suspicious_activit
     
     # -------- User Agent Information --------
     y_position = height - 4.5*inch
-    c.setFillColor(secondary_color)
+    c.setFillColor(colors.HexColor('#0066CC'))
     c.setFont("Helvetica-Bold", 16)
     c.drawString(0.5*inch, y_position, "User Agent Details")
     y_position -= 0.4*inch
     
-    # User agent information in a box
     c.setFillColor(colors.lightgrey)
     ua_box_height = 0.8*inch
     c.rect(0.5*inch, y_position - ua_box_height, width - 1*inch, ua_box_height, fill=True, stroke=False)
     
-    c.setFillColor(text_color)
+    c.setFillColor(colors.HexColor('#333333'))
     c.setFont("Courier", 10)
     ua_text = request_metadata['User-Agent']
-    
-    # Split long user agent string into multiple lines
     ua_lines = simpleSplit(ua_text, "Courier", 10, width - 1.2*inch)
     for i, line in enumerate(ua_lines):
         c.drawString(0.6*inch, y_position - 0.2*inch - (i * 0.2*inch), line)
@@ -344,18 +336,14 @@ def generate_pdf_report(api_key, request_metadata, file_name="suspicious_activit
     
     # -------- Warning Message Section --------
     y_position -= 0.3*inch
-    
-    # Add red warning box
     c.setFillColor(colors.pink)
     warning_box_height = 1*inch
     c.rect(0.5*inch, y_position - warning_box_height, width - 1*inch, warning_box_height, fill=True, stroke=False)
     
-    # Add warning border
-    c.setStrokeColor(primary_color)
+    c.setStrokeColor(colors.HexColor('#FF0000'))
     c.setLineWidth(2)
     c.rect(0.5*inch, y_position - warning_box_height, width - 1*inch, warning_box_height, fill=False, stroke=True)
     
-    # Add warning text
     c.setFillColor(colors.darkred)
     c.setFont("Helvetica-Bold", 16)
     c.drawString(width/2 - 2.5*inch, y_position - 0.4*inch, "⚠️ SUSPICIOUS ACTIVITY DETECTED")
@@ -366,12 +354,11 @@ def generate_pdf_report(api_key, request_metadata, file_name="suspicious_activit
     y_position -= warning_box_height + 0.5*inch
     
     # -------- Potential Risk Factors --------
-    c.setFillColor(secondary_color)
+    c.setFillColor(colors.HexColor('#0066CC'))
     c.setFont("Helvetica-Bold", 16)
     c.drawString(0.5*inch, y_position, "Potential Risk Factors")
     y_position -= 0.4*inch
     
-    # List risk factors
     risk_factors = [
         "Unusual token usage pattern",
         "Suspicious API endpoint access",
@@ -379,28 +366,26 @@ def generate_pdf_report(api_key, request_metadata, file_name="suspicious_activit
         "Potential unauthorized access attempt"
     ]
     
-    c.setFillColor(text_color)
+    c.setFillColor(colors.HexColor('#333333'))
     c.setFont("Helvetica", 11)
-    
     for factor in risk_factors:
         c.drawString(0.7*inch, y_position, "•")
         c.drawString(1*inch, y_position, factor)
         y_position -= 0.25*inch
     
     # -------- Footer --------
-    c.setFillColorRGB(0.95, 0.95, 0.95)  # Light gray background
+    c.setFillColorRGB(0.95, 0.95, 0.95)
     c.rect(0, 0.5*inch, width, 0.5*inch, fill=True, stroke=False)
     
-    c.setFillColor(text_color)
+    c.setFillColor(colors.HexColor('#333333'))
     c.setFont("Helvetica", 8)
     footer_text = "This report was automatically generated by the API Security Protection System. " 
     footer_text += "For more information, please contact your system administrator."
     c.drawString(0.5*inch, 0.7*inch, footer_text)
     
-    # Add page number
     c.drawString(width - 1*inch, 0.7*inch, "Page 1 of 1")
     
-    # Save the PDF
+    # Save the PDF and return the report file path
     c.save()
     
     print(f"✅ Enhanced security report generated at: {report_file_path}")
