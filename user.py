@@ -468,8 +468,8 @@ def home():
         if predicted_class == 1:  # Anomaly detected
             error_message = "🚨 Suspicious activity detected. Request blocked."
             # Generate the PDF report for suspicious activity
-            report_file_path = generate_pdf_report(api_key, request_metadata)
-            print(f"PDF Report generated at: {report_file_path}")
+            # report_file_path = generate_pdf_report(api_key, request_metadata)
+            # print(f"PDF Report generated at: {report_file_path}")
             return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[], pdf_report_path=report_file_path)
         
         # Proceed to API calls if no anomaly detected
