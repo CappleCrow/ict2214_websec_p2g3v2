@@ -212,9 +212,26 @@ def prepare_poe_messages(messages):
 
 # -------------------- Helper function for generating PDF --------------------
 def get_downloads_folder():
-    """Get the default Downloads folder path for the current user."""
+    """
+    Get a writable folder path for storing reports.
+    Tries the user's Downloads folder, but if that doesn't exist or isn't writable,
+    falls back to a temporary directory.
+    """
     home = Path.home()
-    return home / "Downloads"
+    downloads = home / "Downloads"
+    try:
+        downloads.mkdir(parents=True, exist_ok=True)
+        # Test writing a temporary file to ensure it's writable.
+        test_file = downloads / "test.txt"
+        with test_file.open("w") as f:
+            f.write("test")
+        test_file.unlink()  # Remove test file
+        return downloads
+    except Exception as e:
+        # Fallback to a temporary folder on Linux/Unix systems (Azure App Service on Linux allows /tmp)
+        temp_folder = Path("/tmp")
+        temp_folder.mkdir(parents=True, exist_ok=True)
+        return temp_folder
 
 def generate_pdf_report(api_key, request_metadata, file_name="suspicious_activity_report.pdf"):
     """
@@ -438,7 +455,8 @@ def home():
             "User-Agent": request.headers.get("User-Agent", "Unknown"),
             "Token Used": total_tokens,
             "Method_POST": 1 if request.method.upper() == "POST" else 0,
-            "Time of Day": "Morning"
+            "Time of Day": time_of_day
+
         }
 
         # Log the API request
