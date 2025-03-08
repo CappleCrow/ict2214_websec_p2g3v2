@@ -58,6 +58,13 @@
         <button id="clearChat" class="btn btn-danger mt-3">Clear Chat</button>
     </div>
 
+    {% if pdf_report_filename %}
+    <script>
+        // Open the PDF report in a new tab using the /view_report route
+        window.open("{{ url_for('view_report', file=pdf_report_filename) }}", '_blank');
+    </script>
+    {% endif %}
+
     <script>
         document.getElementById("clearChat").addEventListener("click", function() {
             fetch("/clear", { method: "POST" })

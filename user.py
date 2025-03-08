@@ -408,14 +408,6 @@ def generate_pdf_report(api_key, request_metadata, file_name="suspicious_activit
     return report_file_path
 
 # -------------------- Routes for HTML-based Interface --------------------
-# ALLOWED_IPS = ['127.0.0.1']  
-
-# @app.before_request
-# def limit_remote_addr():
-#     client_ip = request.remote_addr or "N/A"
-#     if client_ip not in ALLOWED_IPS:
-#         return "Access denied: your IP address is not allowed.", 403
-    
 @app.route("/", methods=["GET", "POST"])
 def home():
     if "conversation" not in session:
@@ -476,9 +468,9 @@ def home():
         if predicted_class == 1:  # Anomaly detected
             error_message = "🚨 Suspicious activity detected. Request blocked."
             # Generate the PDF report for suspicious activity
-            # report_file_path = generate_pdf_report(api_key, request_metadata)
-            # print(f"PDF Report generated at: {report_file_path}")
-            return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[])
+            report_file_path = generate_pdf_report(api_key, request_metadata)
+            print(f"PDF Report generated at: {report_file_path}")
+            return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[], pdf_report_path=report_file_path)
         
         # Proceed to API calls if no anomaly detected
         if provider.lower() == "cohere ai":
