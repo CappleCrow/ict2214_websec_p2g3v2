@@ -24,8 +24,7 @@ import tiktoken
 import datetime
 import re
 from faker import Faker
-import random
-
+import tempfile
 # -------------------- Model and Preprocessing Setup --------------------
 MODEL_DIR = Path(__file__).parent
 model_paths = {
@@ -229,7 +228,7 @@ def get_downloads_folder():
         return downloads
     except Exception as e:
         # Fallback to a temporary folder on Linux/Unix systems (Azure App Service on Linux allows /tmp)
-        temp_folder = Path("/tmp")
+        temp_folder = Path(tempfile.gettempdir())
         temp_folder.mkdir(parents=True, exist_ok=True)
         return temp_folder
 
