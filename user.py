@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, jsonify
+from flask import Flask, render_template, request, session, jsonify, send_file
 import os
 import requests
 from reportlab.lib.pagesizes import letter
@@ -509,6 +509,16 @@ def home():
         
     return render_template("validate_api_request.html", response_text=response_text, error_message=error_message, conversation=session["conversation"])
 
+@app.route("/view_report")
+def view_report():
+    file_name = request.args.get("file")
+    downloads_folder = get_downloads_folder()
+    file_path = downloads_folder / file_name
+    if file_path.exists():
+        # Serve the file inline so it opens in the browser (new tab)
+        return send_file(str(file_path), mimetype="application/pdf", as_attachment=False)
+    else:
+        return "File not found", 404
 
 @app.route("/clear", methods=["POST"])
 def clear_chat():
