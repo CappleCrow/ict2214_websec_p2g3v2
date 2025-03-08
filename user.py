@@ -452,7 +452,8 @@ def home():
                 error_message = "🚨 Suspicious activity detected. Request blocked."
                 report_file_path = generate_pdf_report(api_key, request_metadata)
                 print(f"PDF Report generated at: {report_file_path}")
-                return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[], pdf_report_path=report_file_path)
+                pdf_report_filename = report_file_path.name
+                return render_template("validate_api_request.html", response_text="", error_message=error_message, conversation=[], pdf_report_filename=pdf_report_filename)
             
             if provider.lower() == "cohere ai":
                 try:
